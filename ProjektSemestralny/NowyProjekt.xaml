@@ -8,10 +8,10 @@
         Title="NowyProjekt" Height="350" Width="300">
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Nowy Projekt" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
-        
+
         <TextBox HorizontalAlignment="Left" Margin="130,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" Text="Nazwa Projektu" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        
+
         <ComboBox HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" Text="Rozmiar Planszy" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
@@ -20,6 +20,12 @@
 
         <ComboBox HorizontalAlignment="Left" Margin="130,140,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,140,0,0" Text="Wypełnienie Kafelka" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <ComboBox HorizontalAlignment="Left" Margin="130,170,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,170,0,0" Text="Opis" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+        <Button Content="Utwórz" HorizontalAlignment="Left" Margin="70,300,0,0" VerticalAlignment="Top" Width="70" Height="20"/>
+        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,300,70,0" VerticalAlignment="Top" Width="70" Height="20"/>
 
     </Grid>
 </Window>
