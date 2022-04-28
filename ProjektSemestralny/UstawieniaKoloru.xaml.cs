@@ -15,24 +15,18 @@ using System.Windows.Shapes;
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for OknoEdycji.xaml
+    /// Interaction logic for UstawieniaKoloru.xaml
     /// </summary>
-    public partial class OknoEdycji : Window
+    public partial class UstawieniaKoloru : Window
     {
-        public OknoEdycji()
+        public UstawieniaKoloru()
         {
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

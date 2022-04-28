@@ -1,0 +1,30 @@
+﻿<Window x:Class="ProjektSemestralny.UstawieniaKoloru"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektSemestralny"
+        mc:Ignorable="d"
+        Title="UstawieniaKoloru" Height="350" Width="320"
+        ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
+    <Grid Background="AntiqueWhite">
+        <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Ustawienia kolorów" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
+
+        <TextBox HorizontalAlignment="Center" Margin="0,0,0,50" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+        <TextBox HorizontalAlignment="Left" Margin="50,0,0,50" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+        <TextBox HorizontalAlignment="Right" Margin="0,0,50,50" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Text="Nowy kolor RGB" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="50,0,0,75" Text="Czerwony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,75" Text="Zielony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,50,75" Text="Niebieski" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+
+        <Rectangle HorizontalAlignment="Right" Fill="White" Height="32" Margin="0,0,5,50" Stroke="Black" VerticalAlignment="Bottom" Width="32"/>
+        
+        <Button Content="Zapisz kolor" HorizontalAlignment="Center" Margin="200,0,0,100" VerticalAlignment="Bottom" Width="100" Height="20"/>
+        <Button Content="Wybierz z listy" HorizontalAlignment="Left" Margin="80,0,0,20" VerticalAlignment="Bottom" Width="100" Height="20"/>
+        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,0,60,20" VerticalAlignment="Bottom" Width="70" Height="20" Click="Button_Click"/>
+        
+        <ListBox Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Height="150"/>
+
+    </Grid>
+</Window>
