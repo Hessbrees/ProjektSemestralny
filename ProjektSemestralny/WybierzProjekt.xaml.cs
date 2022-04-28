@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WybierzProjekt.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WybierzProjekt : Window
     {
-        public MainWindow()
+        public WybierzProjekt()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
@@ -28,20 +27,7 @@ namespace ProjektSemestralny
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NowyProjekt win = new NowyProjekt();
-            win.ShowDialog();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            UsunProjekt win = new UsunProjekt();
-            win.ShowDialog();
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            UsunProjekt win = new UsunProjekt();
-            win.ShowDialog();
+            Close();
         }
     }
 }
