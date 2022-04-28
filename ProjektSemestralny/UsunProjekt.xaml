@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="UsunProjekt" Height="450" Width="300">
+        Title="UsunProjekt" Height="480" Width="300"
+        ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
+    
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Wybierz Projekt" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
         <ListBox VerticalAlignment="Top" Margin="0,50,0,0" Width="280" Height="320" BorderBrush="#FF1745D1"/>
 
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="70,390,0,0" VerticalAlignment="Top" Width="70" Height="20"/>
-        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,390,70,0" VerticalAlignment="Top" Width="70" Height="20"/>
+        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,390,70,0" VerticalAlignment="Top" Width="70" Height="20" Click="Button_Click"/>
     </Grid>
 </Window>

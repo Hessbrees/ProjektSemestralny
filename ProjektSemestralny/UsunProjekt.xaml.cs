@@ -21,7 +21,13 @@ namespace ProjektSemestralny
     {
         public UsunProjekt()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

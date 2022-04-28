@@ -37,5 +37,10 @@ namespace ProjektSemestralny
             UsunProjekt win3 = new UsunProjekt();
             win3.ShowDialog();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
