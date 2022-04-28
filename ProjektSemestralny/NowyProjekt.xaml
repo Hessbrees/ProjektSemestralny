@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="NowyProjekt" Height="350" Width="300">
+        Title="NowyProjekt" Height="350" Width="300"
+        ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
+    
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Nowy Projekt" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
 
@@ -24,8 +26,8 @@
         <ComboBox HorizontalAlignment="Left" Margin="130,170,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,170,0,0" Text="Opis" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <Button Content="Utwórz" HorizontalAlignment="Left" Margin="70,300,0,0" VerticalAlignment="Top" Width="70" Height="20"/>
-        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,300,70,0" VerticalAlignment="Top" Width="70" Height="20"/>
+        <Button Content="Utwórz" HorizontalAlignment="Left" Margin="70,280,0,0" VerticalAlignment="Top" Width="70" Height="20"/>
+        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,280,70,0" VerticalAlignment="Top" Width="70" Height="20" Click="Button_Click"/>
 
     </Grid>
 </Window>

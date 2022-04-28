@@ -22,6 +22,7 @@ namespace ProjektSemestralny
     {
         public MainWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
