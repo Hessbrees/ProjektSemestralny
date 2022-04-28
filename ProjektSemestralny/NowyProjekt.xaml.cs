@@ -21,8 +21,8 @@ namespace ProjektSemestralny
     {
         public NowyProjekt()
         {
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            InitializeComponent();
+           WindowStartupLocation = WindowStartupLocation.CenterScreen;
+           InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

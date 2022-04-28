@@ -6,4 +6,7 @@
     <Application.Resources>
          
     </Application.Resources>
+    <Application.MainWindow>
+        <Window/>
+    </Application.MainWindow>
 </Application>
