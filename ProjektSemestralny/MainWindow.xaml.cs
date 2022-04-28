@@ -40,7 +40,7 @@ namespace ProjektSemestralny
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            UsunProjekt win = new UsunProjekt();
+            WybierzProjekt win = new WybierzProjekt();
             win.ShowDialog();
         }
     }

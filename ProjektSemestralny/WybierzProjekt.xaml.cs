@@ -32,7 +32,9 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            OknoEdycji win = new OknoEdycji();
+            Close();
+            win.Show();
         }
     }
 }
