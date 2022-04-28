@@ -11,7 +11,7 @@
         
         <Grid HorizontalAlignment="Center" Height="190" Margin="0,100,0,0" VerticalAlignment="Top">
 
-            <Button Content="Nowy pusty projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,0,0,0"/>
+            <Button Content="Nowy pusty projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,0,0,0" Click="Button_Click"/>
             <Button Content="Usuń projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,70,0,0"/>
             <Button Content="Wybierz projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,140,0,0"/>
         </Grid>
