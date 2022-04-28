@@ -1,0 +1,18 @@
+﻿<Window x:Class="ProjektSemestralny.OknoEdycji"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektSemestralny"
+        mc:Ignorable="d"
+        Title="OknoEdycji" Height="450" Width="800"
+        ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
+    <Grid Background="AntiqueWhite">
+        
+        <Button Content="Zapisz i zamknij" HorizontalAlignment="Left" Margin="70,390,0,0" VerticalAlignment="Top" Width="100" Height="20"/>
+        <Button Content="Ustawienia koloru" HorizontalAlignment="Right" Margin="0,390,70,0" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Rectangle HorizontalAlignment="Right" Fill="White" Height="20" Margin="0,390,30,0" Stroke="Black" VerticalAlignment="Top" Width="20"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,380,30,0" Text="Opis.." TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="380"/>
+
+    </Grid>
+</Window>

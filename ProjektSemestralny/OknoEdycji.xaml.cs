@@ -15,24 +15,13 @@ using System.Windows.Shapes;
 namespace ProjektSemestralny
 {
     /// <summary>
-    /// Interaction logic for WybierzProjekt.xaml
+    /// Interaction logic for OknoEdycji.xaml
     /// </summary>
-    public partial class WybierzProjekt : Window
+    public partial class OknoEdycji : Window
     {
-        public WybierzProjekt()
+        public OknoEdycji()
         {
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
