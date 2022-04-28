@@ -21,6 +21,7 @@ namespace ProjektSemestralny
     {
         public UstawieniaKoloru()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 

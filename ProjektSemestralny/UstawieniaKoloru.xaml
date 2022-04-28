@@ -5,25 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="UstawieniaKoloru" Height="350" Width="320"
+        Title="UstawieniaKoloru" Height="400" Width="320"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
+    
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Ustawienia kolorów" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
+        <Grid HorizontalAlignment="Center" Height="100" Margin="0,0,0,30" VerticalAlignment="Bottom" Width="265">
 
-        <TextBox HorizontalAlignment="Center" Margin="0,0,0,50" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
-        <TextBox HorizontalAlignment="Left" Margin="50,0,0,50" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
-        <TextBox HorizontalAlignment="Right" Margin="0,0,50,50" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" Text="Nowy kolor RGB" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Left" Margin="50,0,0,75" Text="Czerwony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,75" Text="Zielony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,50,75" Text="Niebieski" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            <TextBox HorizontalAlignment="Left" Margin="85,0,0,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+            <TextBox HorizontalAlignment="Left" Margin="0,0,0,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+            <TextBox HorizontalAlignment="Right" Margin="0,0,45,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+            <TextBlock HorizontalAlignment="Left" Margin="67,0,0,80" Text="Nowy kolor RGB" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            <TextBlock HorizontalAlignment="Left" Margin="0,0,0,55" Text="Czerwony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            <TextBlock HorizontalAlignment="Left" Margin="91,0,0,55" Text="Zielony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,0,45,55" Text="Niebieski" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
 
-        <Rectangle HorizontalAlignment="Right" Fill="White" Height="32" Margin="0,0,5,50" Stroke="Black" VerticalAlignment="Bottom" Width="32"/>
-        
-        <Button Content="Zapisz kolor" HorizontalAlignment="Center" Margin="200,0,0,100" VerticalAlignment="Bottom" Width="100" Height="20"/>
-        <Button Content="Wybierz z listy" HorizontalAlignment="Left" Margin="80,0,0,20" VerticalAlignment="Bottom" Width="100" Height="20"/>
-        <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,0,60,20" VerticalAlignment="Bottom" Width="70" Height="20" Click="Button_Click"/>
-        
+            <Rectangle HorizontalAlignment="Right" Fill="White" Height="32" Margin="0,0,0,30" Stroke="Black" VerticalAlignment="Bottom" Width="32"/>
+
+            <Button Content="Zapisz kolor" HorizontalAlignment="Left" Margin="160,0,0,80" VerticalAlignment="Bottom" Width="100" Height="20"/>
+            <Button Content="Wybierz z listy" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Bottom" Width="100" Height="20"/>
+            <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,0,55,0" VerticalAlignment="Bottom" Width="70" Height="20" Click="Button_Click"/>
+
+        </Grid>
+
         <ListBox Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Height="150"/>
 
     </Grid>
