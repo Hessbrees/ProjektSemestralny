@@ -13,7 +13,7 @@
         <Grid HorizontalAlignment="Center" Height="190" Margin="0,100,0,0" VerticalAlignment="Top">
 
             <Button Content="Nowy pusty projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,0,0,0" Click="Button_Click"/>
-            <Button Content="Usuń projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,70,0,0"/>
+            <Button Content="Usuń projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,70,0,0" Click="Button_Click_1"/>
             <Button Content="Wybierz projekt" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="120" Margin="0,140,0,0"/>
         </Grid>
         <TextBox IsReadOnly="True" HorizontalAlignment="Center" Margin="0,30,0,0" TextAlignment="Center" Text="Fabryka Projektów" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.118,2.657" FontFamily="Arial" FontSize="20"/>

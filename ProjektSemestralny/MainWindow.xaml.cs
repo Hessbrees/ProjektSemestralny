@@ -31,5 +31,11 @@ namespace ProjektSemestralny
             NowyProjekt win2 = new NowyProjekt();
             win2.ShowDialog();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            UsunProjekt win3 = new UsunProjekt();
+            win3.ShowDialog();
+        }
     }
 }
