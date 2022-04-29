@@ -68,6 +68,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="NewProject.cs">
+      <DependentUpon>ProjektSemDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="NowyProjekt.xaml.cs">
       <DependentUpon>NowyProjekt.xaml</DependentUpon>
     </Compile>

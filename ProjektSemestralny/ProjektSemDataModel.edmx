@@ -4,20 +4,55 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjektSemestralnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="ProjektSemestralnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NewProject">
+          <Key>
+            <PropertyRef Name="ID_project" />
+          </Key>
+          <Property Name="ID_project" Type="int" Nullable="false" />
+          <Property Name="boardSize" Type="int" />
+          <Property Name="rectangleSize" Type="int" />
+          <Property Name="defaultRectangleFill" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
+          <EntitySet Name="NewProject" EntityType="Self.NewProject" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjektSemestralnyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ProjektSemestralnyDBEntities" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="ProjektSemestralnyDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="NewProjects" EntityType="ProjektSemestralnyDBModel.NewProject" />
+        </EntityContainer>
+        <EntityType Name="NewProject">
+          <Key>
+            <PropertyRef Name="ID_project" />
+          </Key>
+          <Property Name="ID_project" Type="Int32" Nullable="false" />
+          <Property Name="boardSize" Type="Int32" />
+          <Property Name="rectangleSize" Type="Int32" />
+          <Property Name="defaultRectangleFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjektSemestralnyDBModelStoreContainer" CdmEntityContainer="ProjektSemestralnyDBEntities" />
+        <EntityContainerMapping StorageEntityContainer="ProjektSemestralnyDBModelStoreContainer" CdmEntityContainer="ProjektSemestralnyDBEntities" >
+          <EntitySetMapping Name="NewProjects">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.NewProject">
+              <MappingFragment StoreEntitySet="NewProject">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="defaultRectangleFill" ColumnName="defaultRectangleFill" />
+                <ScalarProperty Name="rectangleSize" ColumnName="rectangleSize" />
+                <ScalarProperty Name="boardSize" ColumnName="boardSize" />
+                <ScalarProperty Name="ID_project" ColumnName="ID_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -31,7 +66,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

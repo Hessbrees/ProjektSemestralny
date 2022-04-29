@@ -33,18 +33,30 @@ namespace ProjektSemestralny
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             newProject();
+            Close();
         }
         private void newProject()
         {
-            int sizeBoardNumber = 0;
+            int sizeBoardNumber;
+
             if (
-                projectName.Text != ""
+                projectName.Text != "" |
+                projectName.Text.Length >15
                 
                 )
             {
                 if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
 
+
+                ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                NewProject newItem = new NewProject()
+                {
+
+                };
+
                 
+
+
 
             }
         }

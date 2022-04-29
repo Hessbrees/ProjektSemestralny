@@ -25,5 +25,6 @@ namespace ProjektSemestralny
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<NewProject> NewProjects { get; set; }
     }
 }
