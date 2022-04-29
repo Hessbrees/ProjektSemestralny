@@ -36,7 +36,6 @@ namespace ProjektSemestralny
         }
         private void newProject()
         {
-            
 
             if (
                 projectName.Text != ""

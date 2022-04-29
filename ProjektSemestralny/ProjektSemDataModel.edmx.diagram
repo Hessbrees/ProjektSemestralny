@@ -5,8 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a6b7dcd5e3444f97a591efedc5692ea2" Name="Diagram1" >
-        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.NewProject" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.GlobalValue" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.NewProject" Width="1.5" PointX="0.875" PointY="1.25" />
+        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.GlobalValue" Width="1.5" PointX="5.125" PointY="1.25" />
+        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.NewColor" Width="1.5" PointX="3" PointY="1.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
