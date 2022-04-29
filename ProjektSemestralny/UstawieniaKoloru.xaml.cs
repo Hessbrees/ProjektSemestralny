@@ -32,18 +32,20 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if(
-                byte.Parse(redColor.Text) <= 255|
-                byte.Parse(greenColor.Text) <= 255|
-                byte.Parse(blueColor.Text) <= 255
-                )
+            try
             {
+                byte red = byte.Parse(redColor.Text);
+                byte green = byte.Parse(greenColor.Text);
+                byte blue = byte.Parse(blueColor.Text);
                 actualColor.Fill = new SolidColorBrush(Color.FromRgb(
-                byte.Parse(redColor.Text),
-                byte.Parse(greenColor.Text),
-                byte.Parse(blueColor.Text)));
+                red, green,blue));
             }
-            
+            catch(Exception)
+            {
+                MessageBox.Show("Błędna wartość!");
+                return;
+            }
+
         }
     }
 }
