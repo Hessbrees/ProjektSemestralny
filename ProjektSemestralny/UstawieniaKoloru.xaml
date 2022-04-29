@@ -34,7 +34,7 @@
             <Button Content="Zmień" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_1"/>
         </Grid>
 
-        <ListBox Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Height="150"/>
+        <ListBox x:Name="colorList" Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Height="150"/>
 
     </Grid>
 </Window>

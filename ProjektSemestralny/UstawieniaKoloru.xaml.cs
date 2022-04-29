@@ -65,6 +65,22 @@ namespace ProjektSemestralny
                 };
                 db.NewColors.Add(newColor);
                 db.SaveChanges();
+
+
+                colorList.Items.Clear();
+                var proj = from p in db.NewColors
+                           select p;
+                foreach (var item in proj)
+                {
+                    colorList.Items.Add(
+                        "RGB Color: "+
+                        item.rgb_red
+                        +" "+
+                        item.rgb_green
+                        +" "+
+                        item.rgb_blue
+                        );
+                }
             }
             catch (Exception)
             {
