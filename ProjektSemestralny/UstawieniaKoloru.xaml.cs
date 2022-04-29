@@ -29,5 +29,21 @@ namespace ProjektSemestralny
         {
             Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if(
+                byte.Parse(redColor.Text) <= 255|
+                byte.Parse(greenColor.Text) <= 255|
+                byte.Parse(blueColor.Text) <= 255
+                )
+            {
+                actualColor.Fill = new SolidColorBrush(Color.FromRgb(
+                byte.Parse(redColor.Text),
+                byte.Parse(greenColor.Text),
+                byte.Parse(blueColor.Text)));
+            }
+            
+        }
     }
 }

@@ -20,16 +20,18 @@
         </Grid>
         <Grid HorizontalAlignment="Center" Margin="0,0,0,50" Height="100" VerticalAlignment="Bottom" Width="290" Background="AliceBlue" OpacityMask="#FF114BC7" >
             <Border BorderBrush="Black" BorderThickness="1"></Border>
-            <Rectangle HorizontalAlignment="Right" Fill="White" Height="32" Margin="0,0,10,30" Stroke="Black" VerticalAlignment="Bottom" Width="32"/>
-            <TextBox HorizontalAlignment="Left" Margin="100,0,0,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
-            <TextBox HorizontalAlignment="Left" Margin="20,0,0,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
-            <TextBox HorizontalAlignment="Right" Margin="0,0,55,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+            <Rectangle x:Name="actualColor" HorizontalAlignment="Right" Fill="White" Height="32" Margin="0,0,10,30" Stroke="Black" VerticalAlignment="Bottom" Width="32"/>
+            <TextBox x:Name="greenColor" HorizontalAlignment="Left" Margin="100,0,0,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+            <TextBox x:Name="redColor" HorizontalAlignment="Left" Margin="20,0,0,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
+            <TextBox x:Name="blueColor" HorizontalAlignment="Right" Margin="0,0,55,30" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
             <TextBlock HorizontalAlignment="Left" Margin="67,0,0,80" Text="Nowy kolor RGB" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            
             <TextBlock HorizontalAlignment="Left" Margin="20,0,0,55" Text="Czerwony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
             <TextBlock HorizontalAlignment="Left" Margin="105,0,0,55" Text="Zielony" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
             <TextBlock HorizontalAlignment="Right" Margin="0,0,55,55" Text="Niebieski" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            
             <Button Content="Zapisz kolor" HorizontalAlignment="Left" Margin="180,0,0,70" VerticalAlignment="Bottom" Width="100" Height="20"/>
-            <Button Content="Zmień" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Width="100" Height="20"/>
+            <Button Content="Zmień" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_1"/>
         </Grid>
 
         <ListBox Margin="0,50,0,0" VerticalAlignment="Top" Width="250" Height="150"/>
