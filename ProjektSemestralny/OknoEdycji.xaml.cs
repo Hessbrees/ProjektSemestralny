@@ -62,7 +62,7 @@ namespace ProjektSemestralny
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Rectangle tb = e.Source as Rectangle;
-            tb.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            tb.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         }
     }
 }
