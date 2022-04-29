@@ -41,25 +41,25 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-            var proj = from p in db.NewProjects
-                       select p.ID_project;
-            int idNumer = 0;
-            foreach (var item in proj)
+            if (projectList.SelectedItem != null)
             {
-                if (idNumer == projectList.SelectedIndex)
+                ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                var proj = from p in db.NewProjects
+                           select p;
+                int idNumer = 0;
+                foreach (var item in proj)
                 {
-                    projectList.Items.Remove(item);
+                    if (idNumer == projectList.SelectedIndex)
+                    {
+                        projectList.Items.Remove(item);
+                        db.NewProjects.Remove(item);
+                    }
+                    idNumer++;
                 }
-                idNumer++;
+                db.SaveChanges();
+                Close();
             }
-            NewProject rem = new NewProject() { ID_project = 1 };
-            db.NewProjects.Remove(rem);
-            db.SaveChanges();
-
-
-            
-            //projectList.Items.Remove(projectList.SelectedItem);
+            else MessageBox.Show("Nie wybrano projektu!");
         }
     }
 }
