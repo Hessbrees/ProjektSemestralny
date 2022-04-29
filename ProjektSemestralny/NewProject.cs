@@ -15,9 +15,10 @@ namespace ProjektSemestralny
     public partial class NewProject
     {
         public int ID_project { get; set; }
+        public string projectName { get; set; }
         public Nullable<int> boardSize { get; set; }
-        public Nullable<int> rectangleSize { get; set; }
-        public string defaultRectangleFill { get; set; }
+        public Nullable<int> squareSize { get; set; }
+        public string defaultSquareFill { get; set; }
         public Nullable<bool> description { get; set; }
     }
 }

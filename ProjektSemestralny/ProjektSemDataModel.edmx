@@ -10,9 +10,10 @@
             <PropertyRef Name="ID_project" />
           </Key>
           <Property Name="ID_project" Type="int" Nullable="false" />
+          <Property Name="projectName" Type="varchar" MaxLength="50" />
           <Property Name="boardSize" Type="int" />
-          <Property Name="rectangleSize" Type="int" />
-          <Property Name="defaultRectangleFill" Type="varchar" MaxLength="50" />
+          <Property Name="squareSize" Type="int" />
+          <Property Name="defaultSquareFill" Type="varchar" MaxLength="50" />
           <Property Name="description" Type="bit" />
         </EntityType>
         <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
@@ -30,9 +31,10 @@
             <PropertyRef Name="ID_project" />
           </Key>
           <Property Name="ID_project" Type="Int32" Nullable="false" />
+          <Property Name="projectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="boardSize" Type="Int32" />
-          <Property Name="rectangleSize" Type="Int32" />
-          <Property Name="defaultRectangleFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="squareSize" Type="Int32" />
+          <Property Name="defaultSquareFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="Boolean" />
         </EntityType>
       </Schema>
@@ -45,9 +47,10 @@
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.NewProject">
               <MappingFragment StoreEntitySet="NewProject">
                 <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="defaultRectangleFill" ColumnName="defaultRectangleFill" />
-                <ScalarProperty Name="rectangleSize" ColumnName="rectangleSize" />
+                <ScalarProperty Name="defaultSquareFill" ColumnName="defaultSquareFill" />
+                <ScalarProperty Name="squareSize" ColumnName="squareSize" />
                 <ScalarProperty Name="boardSize" ColumnName="boardSize" />
+                <ScalarProperty Name="projectName" ColumnName="projectName" />
                 <ScalarProperty Name="ID_project" ColumnName="ID_project" />
               </MappingFragment>
             </EntityTypeMapping>

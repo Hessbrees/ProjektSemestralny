@@ -32,12 +32,12 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            newProject();
+            //newProject();
             Close();
         }
         private void newProject()
         {
-            int sizeBoardNumber;
+            int sizeBoardNumber = 0;
 
             if (
                 projectName.Text != "" |
@@ -51,12 +51,12 @@ namespace ProjektSemestralny
                 ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
                 NewProject newItem = new NewProject()
                 {
-
+                    projectName = projectName.Text,
+                    boardSize = 1,
+                    description = false,
+                    squareSize = 1,
+                    defaultSquareFill = "white"
                 };
-
-                
-
-
 
             }
         }
