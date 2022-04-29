@@ -40,9 +40,14 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            OknoEdycji win = new OknoEdycji();
-            Close();
-            win.Show();
+            if (projectList.SelectedItem != null)
+            {
+
+                OknoEdycji win = new OknoEdycji();
+                Close();
+                win.Show();
+            }
+            else MessageBox.Show("Nie wybrano projektu!");
         }
 
     }
