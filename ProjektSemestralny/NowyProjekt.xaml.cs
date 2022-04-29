@@ -35,14 +35,14 @@ namespace ProjektSemestralny
             //newProject();
             Close();
         }
-        private void newProject()
+/*        private void newProject()
         {
             int sizeBoardNumber = 0;
 
             if (
                 projectName.Text != "" |
-                projectName.Text.Length >15
-                
+                projectName.Text.Length > 15
+
                 )
             {
                 if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
@@ -59,6 +59,6 @@ namespace ProjektSemestralny
                 };
 
             }
-        }
+        }*/
     }
 }

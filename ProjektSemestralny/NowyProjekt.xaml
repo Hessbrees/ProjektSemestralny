@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="NowyProjekt" Height="350" Width="300"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
-    
+
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Nowy Projekt" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
 
