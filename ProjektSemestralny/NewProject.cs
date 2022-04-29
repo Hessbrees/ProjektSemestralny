@@ -16,9 +16,9 @@ namespace ProjektSemestralny
     {
         public int ID_project { get; set; }
         public string projectName { get; set; }
-        public Nullable<int> boardSize { get; set; }
-        public Nullable<int> squareSize { get; set; }
+        public int boardSize { get; set; }
+        public int squareSize { get; set; }
         public string defaultSquareFill { get; set; }
-        public Nullable<bool> description { get; set; }
+        public bool description { get; set; }
     }
 }

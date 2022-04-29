@@ -36,7 +36,7 @@ namespace ProjektSemestralny
         }
         private void newProject()
         {
-            int sizeBoardNumber = 0;
+            
 
             if (
                 projectName.Text != ""
@@ -49,20 +49,26 @@ namespace ProjektSemestralny
                 if (projectName.Text.Length > 15) MessageBox.Show("Nazwa projektu nie może mieć więcej niż 15 znaków!");
                 else
                 {
+                    int sizeBoardNumber = 0;
+                    int sizeSquareNumber = 0;
+                    bool desc = false;
                     if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
 
+                    if (squareSize.SelectedItem == squareSize1) sizeSquareNumber = 1;
+
+                    if (Description.SelectedItem == yesDescription) desc = true;
 
                     ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
                     NewProject newItem = new NewProject()
                     {
                         projectName = projectName.Text,
-                        boardSize = 1,
-                        description = false,
-                        squareSize = 1,
-                        defaultSquareFill = "white"
+                        boardSize = sizeBoardNumber,
+                        description = desc,
+                        squareSize = sizeSquareNumber,
+                        defaultSquareFill = defaultSquareColor.SelectedItem.ToString()
                     };
-                    //db.NewProjects.Add(newItem);
-                    //db.SaveChanges();
+                    db.NewProjects.Add(newItem);
+                    db.SaveChanges();
 
                     Close();
                 }

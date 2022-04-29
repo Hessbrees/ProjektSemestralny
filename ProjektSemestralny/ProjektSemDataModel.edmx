@@ -9,12 +9,12 @@
           <Key>
             <PropertyRef Name="ID_project" />
           </Key>
-          <Property Name="ID_project" Type="int" Nullable="false" />
-          <Property Name="projectName" Type="varchar" MaxLength="50" />
-          <Property Name="boardSize" Type="int" />
-          <Property Name="squareSize" Type="int" />
-          <Property Name="defaultSquareFill" Type="varchar" MaxLength="50" />
-          <Property Name="description" Type="bit" />
+          <Property Name="ID_project" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projectName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="boardSize" Type="int" Nullable="false" />
+          <Property Name="squareSize" Type="int" Nullable="false" />
+          <Property Name="defaultSquareFill" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
           <EntitySet Name="NewProject" EntityType="Self.NewProject" Schema="dbo" store:Type="Tables" />
@@ -31,11 +31,11 @@
             <PropertyRef Name="ID_project" />
           </Key>
           <Property Name="ID_project" Type="Int32" Nullable="false" />
-          <Property Name="projectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="boardSize" Type="Int32" />
-          <Property Name="squareSize" Type="Int32" />
-          <Property Name="defaultSquareFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="Boolean" />
+          <Property Name="projectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="boardSize" Type="Int32" Nullable="false" />
+          <Property Name="squareSize" Type="Int32" Nullable="false" />
+          <Property Name="defaultSquareFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
