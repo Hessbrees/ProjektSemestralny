@@ -47,5 +47,30 @@ namespace ProjektSemestralny
             }
 
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                byte red = byte.Parse(redColor.Text);
+                byte green = byte.Parse(greenColor.Text);
+                byte blue = byte.Parse(blueColor.Text);
+
+                ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                NewColor newColor = new NewColor()
+                {
+                    rgb_blue = blue,
+                    rgb_green = green,
+                    rgb_red = red
+                };
+                db.NewColors.Add(newColor);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Błędna wartość!");
+                return;
+            }
+        }
     }
 }
