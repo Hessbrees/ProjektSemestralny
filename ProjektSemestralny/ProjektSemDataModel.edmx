@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProjektSemestralnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GlobalValues">
+          <Key>
+            <PropertyRef Name="Id_values" />
+          </Key>
+          <Property Name="Id_values" Type="int" Nullable="false" />
+          <Property Name="ChoosenProject" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewProject">
           <Key>
             <PropertyRef Name="ID_project" />
@@ -17,6 +24,7 @@
           <Property Name="description" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
+          <EntitySet Name="GlobalValues" EntityType="Self.GlobalValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewProject" EntityType="Self.NewProject" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -25,6 +33,7 @@
       <Schema Namespace="ProjektSemestralnyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ProjektSemestralnyDBEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="NewProjects" EntityType="ProjektSemestralnyDBModel.NewProject" />
+          <EntitySet Name="GlobalValues" EntityType="ProjektSemestralnyDBModel.GlobalValue" />
         </EntityContainer>
         <EntityType Name="NewProject">
           <Key>
@@ -36,6 +45,13 @@
           <Property Name="squareSize" Type="Int32" Nullable="false" />
           <Property Name="defaultSquareFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlobalValue">
+          <Key>
+            <PropertyRef Name="Id_values" />
+          </Key>
+          <Property Name="Id_values" Type="Int32" Nullable="false" />
+          <Property Name="ChoosenProject" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -52,6 +68,14 @@
                 <ScalarProperty Name="boardSize" ColumnName="boardSize" />
                 <ScalarProperty Name="projectName" ColumnName="projectName" />
                 <ScalarProperty Name="ID_project" ColumnName="ID_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlobalValues">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.GlobalValue">
+              <MappingFragment StoreEntitySet="GlobalValues">
+                <ScalarProperty Name="ChoosenProject" ColumnName="ChoosenProject" />
+                <ScalarProperty Name="Id_values" ColumnName="Id_values" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

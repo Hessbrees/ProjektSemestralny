@@ -52,9 +52,9 @@ namespace ProjektSemestralny
                     int sizeBoardNumber = 0;
                     int sizeSquareNumber = 0;
                     bool desc = false;
-                    if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
+                    if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 640;
 
-                    if (squareSize.SelectedItem == squareSize1) sizeSquareNumber = 1;
+                    if (squareSize.SelectedItem == squareSize1) sizeSquareNumber = sizeBoardNumber/ 20;
 
                     if (Description.SelectedItem == yesDescription) desc = true;
 

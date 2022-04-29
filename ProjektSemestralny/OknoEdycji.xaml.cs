@@ -23,7 +23,7 @@ namespace ProjektSemestralny
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,23 +39,36 @@ namespace ProjektSemestralny
 
         private void AddSquare()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                for(int j=0; j< 20; j++)
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l;
+            var proj = from p in db.NewProjects
+                       select p;
+            foreach (var glob in globValue)
+                foreach (var item in proj)
                 {
-                    Rectangle r = new Rectangle
-                    {
-                        Height = 32,
-                        Width = 32,
-                        Fill = new SolidColorBrush(Colors.Black)
-                    };
-                    r.VerticalAlignment = VerticalAlignment.Top;
-                    r.HorizontalAlignment = HorizontalAlignment.Left;
-                    r.Margin = new Thickness(i * 32, j*32, 0, 0);
-                    r.MouseLeftButtonDown += r_MouseLeftButtonDown;
-                    MainLayer.Children.Add(r);
+                    if (item.ID_project == glob.ChoosenProject)
+                        for (int i = 0; i < item.boardSize/item.squareSize; i++)
+                        {
+                            for (int j = 0; j < item.boardSize / item.squareSize; j++)
+                            {
+                                Rectangle r = new Rectangle
+                                {
+                                    Height = item.squareSize,
+                                    Width = item.squareSize,
+                                    Fill = new SolidColorBrush(Colors.Black)
+                                };
+                                r.VerticalAlignment = VerticalAlignment.Top;
+                                r.HorizontalAlignment = HorizontalAlignment.Left;
+                                r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
+                                r.MouseLeftButtonDown += r_MouseLeftButtonDown;
+                                MainLayer.Children.Add(r);
+                            }
+                        }
+
+
                 }
-            }
+
 
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

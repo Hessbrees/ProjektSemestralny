@@ -43,7 +43,22 @@ namespace ProjektSemestralny
         {
             if (projectList.SelectedItem != null)
             {
-
+                ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                var globValue = from l in db.GlobalValues
+                                select l;
+                var proj = from p in db.NewProjects
+                           select p;
+                int idNumer = 0;
+                foreach (var item in proj)
+                {
+                    foreach(var glob in globValue)
+                    if (idNumer == projectList.SelectedIndex)
+                    {
+                        glob.ChoosenProject = item.ID_project;
+                    }
+                    idNumer++;
+                }
+                db.SaveChanges();
                 OknoEdycji win = new OknoEdycji();
                 Close();
                 win.Show();
