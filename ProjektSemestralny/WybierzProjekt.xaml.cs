@@ -24,12 +24,13 @@ namespace ProjektSemestralny
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             projectList.Items.Clear();
+
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             var proj = from p in db.NewProjects
-                       select p.ID_project;
+                       select p;
             foreach(var item in proj)
             {
-                projectList.Items.Add(item);
+                projectList.Items.Add(item.projectName);
             }
         }
 
