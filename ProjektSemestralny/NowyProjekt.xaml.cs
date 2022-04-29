@@ -29,5 +29,24 @@ namespace ProjektSemestralny
         {
             Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            newProject();
+        }
+        private void newProject()
+        {
+            int sizeBoardNumber = 0;
+            if (
+                projectName.Text != ""
+                
+                )
+            {
+                if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
+
+                
+
+            }
+        }
     }
 }
