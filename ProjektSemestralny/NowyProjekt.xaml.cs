@@ -32,33 +32,45 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //newProject();
-            Close();
+            newProject();
         }
-/*        private void newProject()
+        private void newProject()
         {
             int sizeBoardNumber = 0;
 
             if (
-                projectName.Text != "" |
-                projectName.Text.Length > 15
-
+                projectName.Text != ""
+                & sizeBoard.SelectedItem != null
+                & squareSize.SelectedItem != null
+                & Description.SelectedItem != null
+                & defaultSquareColor != null
                 )
             {
-                if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
-
-
-                ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-                NewProject newItem = new NewProject()
+                if (projectName.Text.Length > 15) MessageBox.Show("Nazwa projektu nie może mieć więcej niż 15 znaków!");
+                else
                 {
-                    projectName = projectName.Text,
-                    boardSize = 1,
-                    description = false,
-                    squareSize = 1,
-                    defaultSquareFill = "white"
-                };
+                    if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 1;
 
+
+                    ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                    NewProject newItem = new NewProject()
+                    {
+                        projectName = projectName.Text,
+                        boardSize = 1,
+                        description = false,
+                        squareSize = 1,
+                        defaultSquareFill = "white"
+                    };
+                    //db.NewProjects.Add(newItem);
+                    //db.SaveChanges();
+
+                    Close();
+                }
             }
-        }*/
+            else
+            {
+                MessageBox.Show("Nie wszystkie pola są wypełnione!");
+            }
+        }
     }
 }
