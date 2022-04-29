@@ -28,8 +28,7 @@ namespace ProjektSemestralny
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddSquare();
-            //Close();
+            Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -63,6 +62,11 @@ namespace ProjektSemestralny
         {
             Rectangle tb = e.Source as Rectangle;
             tb.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddSquare();
         }
     }
 }

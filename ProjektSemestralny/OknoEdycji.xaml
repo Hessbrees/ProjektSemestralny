@@ -10,6 +10,7 @@
     <Grid Background="AntiqueWhite">
 
         <Button Content="Zapisz i zamknij" HorizontalAlignment="Left" Margin="70,0,0,10" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="70,0,0,40" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_2"/>
         <Button Content="Ustawienia koloru" HorizontalAlignment="Right" Margin="0,0,70,10" VerticalAlignment="Bottom" Width="120" Height="20" Click="Button_Click_1"/>
         <Rectangle HorizontalAlignment="Right" Fill="White" Height="20" Margin="0,0,30,10" Stroke="Black" VerticalAlignment="Bottom" Width="20"/>
         <TextBox HorizontalAlignment="Center" Margin="0,0,30,10" Text="Opis.." TextWrapping="Wrap" VerticalAlignment="Bottom" Height="40" Width="380"/>
