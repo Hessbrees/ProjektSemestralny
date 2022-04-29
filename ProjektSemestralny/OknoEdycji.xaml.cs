@@ -23,17 +23,46 @@ namespace ProjektSemestralny
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            AddSquare();
+            //Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             UstawieniaKoloru win = new UstawieniaKoloru();
             win.ShowDialog();
+        }
+
+        private void AddSquare()
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                for(int j=0; j< 20; j++)
+                {
+                    Rectangle r = new Rectangle
+                    {
+                        Height = 32,
+                        Width = 32,
+                        Fill = new SolidColorBrush(Colors.Black)
+                    };
+                    r.VerticalAlignment = VerticalAlignment.Top;
+                    r.HorizontalAlignment = HorizontalAlignment.Left;
+                    r.Margin = new Thickness(i * 32, j*32, 0, 0);
+                    r.MouseLeftButtonDown += r_MouseLeftButtonDown;
+                    MainLayer.Children.Add(r);
+                }
+            }
+
+        }
+        void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle tb = e.Source as Rectangle;
+            tb.Fill = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         }
     }
 }
