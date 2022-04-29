@@ -23,6 +23,9 @@ namespace ProjektSemestralny
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+
+            RefreshList();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,25 +70,30 @@ namespace ProjektSemestralny
                 db.SaveChanges();
 
 
-                colorList.Items.Clear();
-                var proj = from p in db.NewColors
-                           select p;
-                foreach (var item in proj)
-                {
-                    colorList.Items.Add(
-                        "RGB Color: "+
-                        item.rgb_red
-                        +" "+
-                        item.rgb_green
-                        +" "+
-                        item.rgb_blue
-                        );
-                }
+                RefreshList();
             }
             catch (Exception)
             {
                 MessageBox.Show("Błędna wartość!");
                 return;
+            }
+        }
+        private void RefreshList()
+        {
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            colorList.Items.Clear();
+            var proj = from p in db.NewColors
+                       select p;
+            foreach (var item in proj)
+            {
+                colorList.Items.Add(
+                    "RGB Color: " +
+                    item.rgb_red
+                    + " " +
+                    item.rgb_green
+                    + " " +
+                    item.rgb_blue
+                    );
             }
         }
     }
