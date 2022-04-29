@@ -24,12 +24,24 @@ namespace ProjektSemestralny
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
 
-            GlobalColor value = new GlobalColor();
-            actualColor.Fill = new SolidColorBrush(Color.FromRgb(
-            value.choosenColorRed, value.choosenColorGreen, value.choosenColorBlue));
+            refreshColor();
 
         }
+        /// <summary>
+        /// Odświeżenie koloru w oknie edycji
+        /// </summary>
+        public void refreshColor()
+        {
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalColors
+                            select l;
+            foreach (var value in globValue)
+            {
+                actualColor.Fill = new SolidColorBrush(Color.FromRgb(
+                value.choosenColorRed, value.choosenColorGreen, value.choosenColorBlue));
+            }
 
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -52,7 +64,7 @@ namespace ProjektSemestralny
                 foreach (var item in proj)
                 {
                     if (item.ID_project == glob.ChoosenProject)
-                        for (int i = 0; i < item.boardSize/item.squareSize; i++)
+                        for (int i = 0; i < item.boardSize / item.squareSize; i++)
                         {
                             for (int j = 0; j < item.boardSize / item.squareSize; j++)
                             {
@@ -69,11 +81,7 @@ namespace ProjektSemestralny
                                 MainLayer.Children.Add(r);
                             }
                         }
-
-
                 }
-
-
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

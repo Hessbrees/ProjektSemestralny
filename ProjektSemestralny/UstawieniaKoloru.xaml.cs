@@ -141,9 +141,13 @@ namespace ProjektSemestralny
                     idNumer++;
                 }
                 db.SaveChanges();
+
                 Close();
+
+                OknoEdycji oe = new OknoEdycji();
+                oe.refreshColor();
             }
-            else MessageBox.Show("Nie wybrano projektu!");
+            else MessageBox.Show("Nie wybrano koloru!");
         }
     }
 }
