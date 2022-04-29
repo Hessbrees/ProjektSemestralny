@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProjektSemestralnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GlobalColor">
+          <Key>
+            <PropertyRef Name="id_choosenColor" />
+          </Key>
+          <Property Name="id_choosenColor" Type="int" Nullable="false" />
+          <Property Name="choosenColorRed" Type="tinyint" Nullable="false" />
+          <Property Name="choosenColorGreen" Type="tinyint" Nullable="false" />
+          <Property Name="choosenColorBlue" Type="tinyint" Nullable="false" />
+        </EntityType>
         <EntityType Name="GlobalValues">
           <Key>
             <PropertyRef Name="Id_values" />
@@ -17,9 +26,9 @@
             <PropertyRef Name="id_kolor" />
           </Key>
           <Property Name="id_kolor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="rgb_red" Type="int" Nullable="false" />
-          <Property Name="rgb_green" Type="int" Nullable="false" />
-          <Property Name="rgb_blue" Type="int" Nullable="false" />
+          <Property Name="rgb_red" Type="tinyint" Nullable="false" />
+          <Property Name="rgb_green" Type="tinyint" Nullable="false" />
+          <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="NewProject">
           <Key>
@@ -33,6 +42,7 @@
           <Property Name="description" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
+          <EntitySet Name="GlobalColor" EntityType="Self.GlobalColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GlobalValues" EntityType="Self.GlobalValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewColor" EntityType="Self.NewColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewProject" EntityType="Self.NewProject" Schema="dbo" store:Type="Tables" />
@@ -44,6 +54,7 @@
         <EntityContainer Name="ProjektSemestralnyDBEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="NewProjects" EntityType="ProjektSemestralnyDBModel.NewProject" />
           <EntitySet Name="GlobalValues" EntityType="ProjektSemestralnyDBModel.GlobalValue" />
+          <EntitySet Name="GlobalColors" EntityType="ProjektSemestralnyDBModel.GlobalColor" />
           <EntitySet Name="NewColors" EntityType="ProjektSemestralnyDBModel.NewColor" />
         </EntityContainer>
         <EntityType Name="NewProject">
@@ -64,14 +75,23 @@
           <Property Name="Id_values" Type="Int32" Nullable="false" />
           <Property Name="ChoosenProject" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="GlobalColor">
+          <Key>
+            <PropertyRef Name="id_choosenColor" />
+          </Key>
+          <Property Name="id_choosenColor" Type="Int32" Nullable="false" />
+          <Property Name="choosenColorRed" Type="Byte" Nullable="false" />
+          <Property Name="choosenColorGreen" Type="Byte" Nullable="false" />
+          <Property Name="choosenColorBlue" Type="Byte" Nullable="false" />
+        </EntityType>
         <EntityType Name="NewColor">
           <Key>
             <PropertyRef Name="id_kolor" />
           </Key>
           <Property Name="id_kolor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="rgb_red" Type="Int32" Nullable="false" />
-          <Property Name="rgb_green" Type="Int32" Nullable="false" />
-          <Property Name="rgb_blue" Type="Int32" Nullable="false" />
+          <Property Name="rgb_red" Type="Byte" Nullable="false" />
+          <Property Name="rgb_green" Type="Byte" Nullable="false" />
+          <Property Name="rgb_blue" Type="Byte" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -96,6 +116,16 @@
               <MappingFragment StoreEntitySet="GlobalValues">
                 <ScalarProperty Name="ChoosenProject" ColumnName="ChoosenProject" />
                 <ScalarProperty Name="Id_values" ColumnName="Id_values" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlobalColors">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.GlobalColor">
+              <MappingFragment StoreEntitySet="GlobalColor">
+                <ScalarProperty Name="choosenColorBlue" ColumnName="choosenColorBlue" />
+                <ScalarProperty Name="choosenColorGreen" ColumnName="choosenColorGreen" />
+                <ScalarProperty Name="choosenColorRed" ColumnName="choosenColorRed" />
+                <ScalarProperty Name="id_choosenColor" ColumnName="id_choosenColor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

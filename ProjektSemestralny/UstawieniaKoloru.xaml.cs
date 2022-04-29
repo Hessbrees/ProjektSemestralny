@@ -118,5 +118,32 @@ namespace ProjektSemestralny
             }
             else MessageBox.Show("Nie wybrano elementu z listy!");
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            if (colorList.SelectedItem != null)
+            {
+                ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                var globValue = from l in db.GlobalColors
+                                select l;
+                var proj = from p in db.NewColors
+                           select p;
+                int idNumer = 0;
+                foreach (var item in proj)
+                {
+                    foreach (var glob in globValue)
+                        if (idNumer == colorList.SelectedIndex)
+                        {
+                            glob.choosenColorRed = item.rgb_red;
+                            glob.choosenColorGreen = item.rgb_green;
+                            glob.choosenColorBlue = item.rgb_blue;
+                        }
+                    idNumer++;
+                }
+                db.SaveChanges();
+                Close();
+            }
+            else MessageBox.Show("Nie wybrano projektu!");
+        }
     }
 }

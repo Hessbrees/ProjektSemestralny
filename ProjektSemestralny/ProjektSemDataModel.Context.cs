@@ -27,6 +27,7 @@ namespace ProjektSemestralny
     
         public virtual DbSet<NewProject> NewProjects { get; set; }
         public virtual DbSet<GlobalValue> GlobalValues { get; set; }
+        public virtual DbSet<GlobalColor> GlobalColors { get; set; }
         public virtual DbSet<NewColor> NewColors { get; set; }
     }
 }

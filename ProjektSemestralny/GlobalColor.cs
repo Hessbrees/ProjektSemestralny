@@ -12,11 +12,11 @@ namespace ProjektSemestralny
     using System;
     using System.Collections.Generic;
     
-    public partial class NewColor
+    public partial class GlobalColor
     {
-        public int id_kolor { get; set; }
-        public byte rgb_red { get; set; }
-        public byte rgb_green { get; set; }
-        public byte rgb_blue { get; set; }
+        public int id_choosenColor { get; set; }
+        public byte choosenColorRed { get; set; }
+        public byte choosenColorGreen { get; set; }
+        public byte choosenColorBlue { get; set; }
     }
 }

@@ -24,6 +24,10 @@ namespace ProjektSemestralny
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
 
+            GlobalColor value = new GlobalColor();
+            actualColor.Fill = new SolidColorBrush(Color.FromRgb(
+            value.choosenColorRed, value.choosenColorGreen, value.choosenColorBlue));
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
