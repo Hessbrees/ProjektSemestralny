@@ -9,7 +9,7 @@
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
 
     <Grid Background="AntiqueWhite">
-        <Button Content="Usuń kolor" HorizontalAlignment="Center" Margin="0,0,0,160" VerticalAlignment="Bottom" Width="100" Height="20"/>
+        <Button Content="Usuń kolor" HorizontalAlignment="Center" Margin="0,0,0,160" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_3"/>
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Ustawienia kolorów" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
         <Grid HorizontalAlignment="Center" Height="130" Margin="0,0,0,20" VerticalAlignment="Bottom" Width="265">
             
