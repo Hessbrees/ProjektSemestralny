@@ -9,7 +9,7 @@
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Wybierz Projekt" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>
-        <ListBox VerticalAlignment="Top" Margin="0,50,0,0" Width="280" Height="320" BorderBrush="#FF1745D1"/>
+        <ListBox x:Name="projectList" VerticalAlignment="Top" Margin="0,50,0,0" Width="280" Height="320" BorderBrush="#FF1745D1"/>
 
         <Button Content="Uruchom" HorizontalAlignment="Left" Margin="70,390,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="Button_Click_1"/>
         <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,390,70,0" VerticalAlignment="Top" Width="70" Height="20" Click="Button_Click"/>

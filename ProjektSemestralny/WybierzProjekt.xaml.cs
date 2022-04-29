@@ -23,6 +23,14 @@ namespace ProjektSemestralny
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            projectList.Items.Clear();
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var proj = from p in db.NewProjects
+                       select p.ID_project;
+            foreach(var item in proj)
+            {
+                projectList.Items.Add(item);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,5 +44,6 @@ namespace ProjektSemestralny
             Close();
             win.Show();
         }
+
     }
 }
