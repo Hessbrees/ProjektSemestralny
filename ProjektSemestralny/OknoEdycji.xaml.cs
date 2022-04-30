@@ -89,7 +89,7 @@ namespace ProjektSemestralny
             foreach (var glob in globValue)
                 foreach (var item in proj)
                 {
-                    if (item.ID_project == glob.ChoosenProject)
+                    if (item.id_project == glob.actualProject)
                         for (int i = 0; i < item.boardSize / item.squareSize; i++)
                         {
                             for (int j = 0; j < item.boardSize / item.squareSize; j++)

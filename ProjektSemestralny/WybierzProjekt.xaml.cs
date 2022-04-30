@@ -54,7 +54,7 @@ namespace ProjektSemestralny
                     foreach(var glob in globValue)
                     if (idNumer == projectList.SelectedIndex)
                     {
-                        glob.ChoosenProject = item.ID_project;
+                        glob.actualProject = item.id_project;
                     }
                     idNumer++;
                 }
