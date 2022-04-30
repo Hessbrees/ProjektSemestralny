@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id_boardColors" />
           </Key>
-          <Property Name="id_boardColors" Type="int" Nullable="false" />
+          <Property Name="id_boardColors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_project" Type="int" />
           <Property Name="rgb_red" Type="tinyint" Nullable="false" />
           <Property Name="rgb_green" Type="tinyint" Nullable="false" />
@@ -19,17 +19,18 @@
           <Key>
             <PropertyRef Name="id_defaultColor" />
           </Key>
-          <Property Name="id_defaultColor" Type="int" Nullable="false" />
-          <Property Name="id_project" Type="int" />
+          <Property Name="id_defaultColor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_project" Type="int" Nullable="false" />
           <Property Name="rgb_red" Type="tinyint" Nullable="false" />
           <Property Name="rgb_green" Type="tinyint" Nullable="false" />
           <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
+          <Property Name="positionNumber" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="GlobalColors">
           <Key>
             <PropertyRef Name="id_color" />
           </Key>
-          <Property Name="id_color" Type="int" Nullable="false" />
+          <Property Name="id_color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_values" Type="int" />
           <Property Name="choosenColorRed" Type="tinyint" Nullable="false" />
           <Property Name="choosenColorGreen" Type="tinyint" Nullable="false" />
@@ -46,7 +47,7 @@
           <Key>
             <PropertyRef Name="id_newColor" />
           </Key>
-          <Property Name="id_newColor" Type="int" Nullable="false" />
+          <Property Name="id_newColor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="rgb_red" Type="tinyint" Nullable="false" />
           <Property Name="rgb_green" Type="tinyint" Nullable="false" />
           <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
@@ -66,7 +67,7 @@
             <PropertyRef Name="id_defaultSquareFill" />
           </Key>
           <Property Name="id_project" Type="int" Nullable="false" />
-          <Property Name="id_defaultSquareFill" Type="int" Nullable="false" />
+          <Property Name="id_defaultSquareFill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="defaultRed" Type="tinyint" Nullable="false" />
           <Property Name="defaultGreen" Type="tinyint" Nullable="false" />
           <Property Name="defaultBlue" Type="tinyint" Nullable="false" />
@@ -84,7 +85,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Key_DefaultColors_id_project">
-          <End Role="NewProject" Type="Self.NewProject" Multiplicity="0..1" />
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
           <End Role="DefaultColors" Type="Self.DefaultColors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NewProject">
@@ -177,7 +178,7 @@
           <Key>
             <PropertyRef Name="id_boardColors" />
           </Key>
-          <Property Name="id_boardColors" Type="Int32" Nullable="false" />
+          <Property Name="id_boardColors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_project" Type="Int32" />
           <Property Name="rgb_red" Type="Byte" Nullable="false" />
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
@@ -188,18 +189,19 @@
           <Key>
             <PropertyRef Name="id_defaultColor" />
           </Key>
-          <Property Name="id_defaultColor" Type="Int32" Nullable="false" />
-          <Property Name="id_project" Type="Int32" />
+          <Property Name="id_defaultColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_project" Type="Int32" Nullable="false" />
           <Property Name="rgb_red" Type="Byte" Nullable="false" />
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
           <Property Name="rgb_blue" Type="Byte" Nullable="false" />
+          <Property Name="positionNumber" Type="Byte" Nullable="false" />
           <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" FromRole="DefaultColor" ToRole="NewProject" />
         </EntityType>
         <EntityType Name="GlobalColor">
           <Key>
             <PropertyRef Name="id_color" />
           </Key>
-          <Property Name="id_color" Type="Int32" Nullable="false" />
+          <Property Name="id_color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_values" Type="Int32" />
           <Property Name="choosenColorRed" Type="Byte" Nullable="false" />
           <Property Name="choosenColorGreen" Type="Byte" Nullable="false" />
@@ -218,7 +220,7 @@
           <Key>
             <PropertyRef Name="id_newColor" />
           </Key>
-          <Property Name="id_newColor" Type="Int32" Nullable="false" />
+          <Property Name="id_newColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="rgb_red" Type="Byte" Nullable="false" />
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
           <Property Name="rgb_blue" Type="Byte" Nullable="false" />
@@ -241,7 +243,7 @@
             <PropertyRef Name="id_defaultSquareFill" />
           </Key>
           <Property Name="id_project" Type="Int32" Nullable="false" />
-          <Property Name="id_defaultSquareFill" Type="Int32" Nullable="false" />
+          <Property Name="id_defaultSquareFill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="defaultRed" Type="Byte" Nullable="false" />
           <Property Name="defaultGreen" Type="Byte" Nullable="false" />
           <Property Name="defaultBlue" Type="Byte" Nullable="false" />
@@ -260,7 +262,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Key_DefaultColors_id_project">
-          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="0..1" />
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="1" />
           <End Type="ProjektSemestralnyDBModel.DefaultColor" Role="DefaultColor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NewProject">
@@ -315,6 +317,7 @@
           <EntitySetMapping Name="DefaultColors">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.DefaultColor">
               <MappingFragment StoreEntitySet="DefaultColors">
+                <ScalarProperty Name="positionNumber" ColumnName="positionNumber" />
                 <ScalarProperty Name="rgb_blue" ColumnName="rgb_blue" />
                 <ScalarProperty Name="rgb_green" ColumnName="rgb_green" />
                 <ScalarProperty Name="rgb_red" ColumnName="rgb_red" />

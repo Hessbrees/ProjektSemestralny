@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a6b7dcd5e3444f97a591efedc5692ea2" Name="Diagram1" ZoomLevel="74" >
-        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.BoardColor" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.BoardColor" Width="1.5" PointX="3" PointY="7.25" />
         <EntityTypeShape EntityType="ProjektSemestralnyDBModel.DefaultColor" Width="1.5" PointX="3" PointY="4.125" />
         <EntityTypeShape EntityType="ProjektSemestralnyDBModel.GlobalColor" Width="1.5" PointX="8" PointY="0.875" />
         <EntityTypeShape EntityType="ProjektSemestralnyDBModel.GlobalValue" Width="1.5" PointX="5.75" PointY="1.25" />
         <EntityTypeShape EntityType="ProjektSemestralnyDBModel.NewColor" Width="1.5" PointX="5.75" PointY="4.75" />
         <EntityTypeShape EntityType="ProjektSemestralnyDBModel.NewProject" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.SquareFill" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="ProjektSemestralnyDBModel.SquareFill" Width="1.5" PointX="3" PointY="1.25" />
         <AssociationConnector Association="ProjektSemestralnyDBModel.Key_BoardColors_id_project" />
         <AssociationConnector Association="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" />
         <AssociationConnector Association="ProjektSemestralnyDBModel.Key_GlobalColors_id_values" />

@@ -15,10 +15,11 @@ namespace ProjektSemestralny
     public partial class DefaultColor
     {
         public int id_defaultColor { get; set; }
-        public Nullable<int> id_project { get; set; }
+        public int id_project { get; set; }
         public byte rgb_red { get; set; }
         public byte rgb_green { get; set; }
         public byte rgb_blue { get; set; }
+        public byte positionNumber { get; set; }
     
         public virtual NewProject NewProject { get; set; }
     }

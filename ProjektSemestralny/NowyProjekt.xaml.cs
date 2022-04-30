@@ -85,8 +85,17 @@ namespace ProjektSemestralny
                         defaultGreen=green,
                         defaultBlue =blue
                     };
+                    DefaultColor defaultColor = new DefaultColor()
+                    {
+                        rgb_red = 255,
+                        rgb_blue = 255,
+                        rgb_green = 255,
+                        positionNumber = (byte)1
+                    };
+                    db.DefaultColors.Add(defaultColor);
                     db.SquareFills.Add(newSquare);
                     db.NewProjects.Add(newItem);
+
 
                     // Sprawdzenie czy aktualna tablica z globalnymi wartościami jest pusta
                     var globValue = from l in db.GlobalValues
