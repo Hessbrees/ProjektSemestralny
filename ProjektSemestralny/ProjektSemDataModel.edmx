@@ -5,127 +5,340 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProjektSemestralnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="GlobalColor">
+        <EntityType Name="BoardColors">
           <Key>
-            <PropertyRef Name="id_choosenColor" />
+            <PropertyRef Name="id_boardColors" />
           </Key>
-          <Property Name="id_choosenColor" Type="int" Nullable="false" />
+          <Property Name="id_boardColors" Type="int" Nullable="false" />
+          <Property Name="id_project" Type="int" />
+          <Property Name="rgb_red" Type="tinyint" Nullable="false" />
+          <Property Name="rgb_green" Type="tinyint" Nullable="false" />
+          <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DefaultColors">
+          <Key>
+            <PropertyRef Name="id_defaultColor" />
+          </Key>
+          <Property Name="id_defaultColor" Type="int" Nullable="false" />
+          <Property Name="id_project" Type="int" />
+          <Property Name="rgb_red" Type="tinyint" Nullable="false" />
+          <Property Name="rgb_green" Type="tinyint" Nullable="false" />
+          <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlobalColors">
+          <Key>
+            <PropertyRef Name="id_color" />
+          </Key>
+          <Property Name="id_color" Type="int" Nullable="false" />
+          <Property Name="id_values" Type="int" />
           <Property Name="choosenColorRed" Type="tinyint" Nullable="false" />
           <Property Name="choosenColorGreen" Type="tinyint" Nullable="false" />
           <Property Name="choosenColorBlue" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="GlobalValues">
           <Key>
-            <PropertyRef Name="Id_values" />
+            <PropertyRef Name="id_values" />
           </Key>
-          <Property Name="Id_values" Type="int" Nullable="false" />
-          <Property Name="ChoosenProject" Type="int" Nullable="false" />
+          <Property Name="id_values" Type="int" Nullable="false" />
+          <Property Name="actualProject" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="NewColor">
           <Key>
-            <PropertyRef Name="id_kolor" />
+            <PropertyRef Name="id_newColor" />
           </Key>
-          <Property Name="id_kolor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_newColor" Type="int" Nullable="false" />
           <Property Name="rgb_red" Type="tinyint" Nullable="false" />
           <Property Name="rgb_green" Type="tinyint" Nullable="false" />
           <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="NewProject">
           <Key>
-            <PropertyRef Name="ID_project" />
+            <PropertyRef Name="id_project" />
           </Key>
-          <Property Name="ID_project" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="projectName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_project" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projectName" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="boardSize" Type="int" Nullable="false" />
           <Property Name="squareSize" Type="int" Nullable="false" />
-          <Property Name="defaultSquareFill" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="SquareFill">
+          <Key>
+            <PropertyRef Name="id_defaultSquareFill" />
+          </Key>
+          <Property Name="id_project" Type="int" Nullable="false" />
+          <Property Name="id_defaultSquareFill" Type="int" Nullable="false" />
+          <Property Name="defaultRed" Type="tinyint" Nullable="false" />
+          <Property Name="defaultGreen" Type="tinyint" Nullable="false" />
+          <Property Name="defaultBlue" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="Key_BoardColors_id_project">
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="0..1" />
+          <End Role="BoardColors" Type="Self.BoardColors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="BoardColors">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_DefaultColors_id_project">
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="0..1" />
+          <End Role="DefaultColors" Type="Self.DefaultColors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="DefaultColors">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_GlobalColors_id_values">
+          <End Role="GlobalValues" Type="Self.GlobalValues" Multiplicity="0..1" />
+          <End Role="GlobalColors" Type="Self.GlobalColors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GlobalValues">
+              <PropertyRef Name="id_values" />
+            </Principal>
+            <Dependent Role="GlobalColors">
+              <PropertyRef Name="id_values" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_SquareFill_id_project">
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
+          <End Role="SquareFill" Type="Self.SquareFill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="SquareFill">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
-          <EntitySet Name="GlobalColor" EntityType="Self.GlobalColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BoardColors" EntityType="Self.BoardColors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefaultColors" EntityType="Self.DefaultColors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GlobalColors" EntityType="Self.GlobalColors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GlobalValues" EntityType="Self.GlobalValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewColor" EntityType="Self.NewColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewProject" EntityType="Self.NewProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SquareFill" EntityType="Self.SquareFill" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Key_BoardColors_id_project" Association="Self.Key_BoardColors_id_project">
+            <End Role="NewProject" EntitySet="NewProject" />
+            <End Role="BoardColors" EntitySet="BoardColors" />
+          </AssociationSet>
+          <AssociationSet Name="Key_DefaultColors_id_project" Association="Self.Key_DefaultColors_id_project">
+            <End Role="NewProject" EntitySet="NewProject" />
+            <End Role="DefaultColors" EntitySet="DefaultColors" />
+          </AssociationSet>
+          <AssociationSet Name="Key_GlobalColors_id_values" Association="Self.Key_GlobalColors_id_values">
+            <End Role="GlobalValues" EntitySet="GlobalValues" />
+            <End Role="GlobalColors" EntitySet="GlobalColors" />
+          </AssociationSet>
+          <AssociationSet Name="Key_SquareFill_id_project" Association="Self.Key_SquareFill_id_project">
+            <End Role="NewProject" EntitySet="NewProject" />
+            <End Role="SquareFill" EntitySet="SquareFill" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjektSemestralnyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ProjektSemestralnyDBEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="NewProjects" EntityType="ProjektSemestralnyDBModel.NewProject" />
-          <EntitySet Name="GlobalValues" EntityType="ProjektSemestralnyDBModel.GlobalValue" />
+          <EntitySet Name="BoardColors" EntityType="ProjektSemestralnyDBModel.BoardColor" />
+          <EntitySet Name="DefaultColors" EntityType="ProjektSemestralnyDBModel.DefaultColor" />
           <EntitySet Name="GlobalColors" EntityType="ProjektSemestralnyDBModel.GlobalColor" />
+          <EntitySet Name="GlobalValues" EntityType="ProjektSemestralnyDBModel.GlobalValue" />
           <EntitySet Name="NewColors" EntityType="ProjektSemestralnyDBModel.NewColor" />
+          <EntitySet Name="NewProjects" EntityType="ProjektSemestralnyDBModel.NewProject" />
+          <EntitySet Name="SquareFills" EntityType="ProjektSemestralnyDBModel.SquareFill" />
+          <AssociationSet Name="Key_BoardColors_id_project" Association="ProjektSemestralnyDBModel.Key_BoardColors_id_project">
+            <End Role="NewProject" EntitySet="NewProjects" />
+            <End Role="BoardColor" EntitySet="BoardColors" />
+          </AssociationSet>
+          <AssociationSet Name="Key_DefaultColors_id_project" Association="ProjektSemestralnyDBModel.Key_DefaultColors_id_project">
+            <End Role="NewProject" EntitySet="NewProjects" />
+            <End Role="DefaultColor" EntitySet="DefaultColors" />
+          </AssociationSet>
+          <AssociationSet Name="Key_GlobalColors_id_values" Association="ProjektSemestralnyDBModel.Key_GlobalColors_id_values">
+            <End Role="GlobalValue" EntitySet="GlobalValues" />
+            <End Role="GlobalColor" EntitySet="GlobalColors" />
+          </AssociationSet>
+          <AssociationSet Name="Key_SquareFill_id_project" Association="ProjektSemestralnyDBModel.Key_SquareFill_id_project">
+            <End Role="NewProject" EntitySet="NewProjects" />
+            <End Role="SquareFill" EntitySet="SquareFills" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="NewProject">
+        <EntityType Name="BoardColor">
           <Key>
-            <PropertyRef Name="ID_project" />
+            <PropertyRef Name="id_boardColors" />
           </Key>
-          <Property Name="ID_project" Type="Int32" Nullable="false" />
-          <Property Name="projectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="boardSize" Type="Int32" Nullable="false" />
-          <Property Name="squareSize" Type="Int32" Nullable="false" />
-          <Property Name="defaultSquareFill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="Boolean" Nullable="false" />
+          <Property Name="id_boardColors" Type="Int32" Nullable="false" />
+          <Property Name="id_project" Type="Int32" />
+          <Property Name="rgb_red" Type="Byte" Nullable="false" />
+          <Property Name="rgb_green" Type="Byte" Nullable="false" />
+          <Property Name="rgb_blue" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="BoardColor" ToRole="NewProject" />
         </EntityType>
-        <EntityType Name="GlobalValue">
+        <EntityType Name="DefaultColor">
           <Key>
-            <PropertyRef Name="Id_values" />
+            <PropertyRef Name="id_defaultColor" />
           </Key>
-          <Property Name="Id_values" Type="Int32" Nullable="false" />
-          <Property Name="ChoosenProject" Type="Int32" Nullable="false" />
+          <Property Name="id_defaultColor" Type="Int32" Nullable="false" />
+          <Property Name="id_project" Type="Int32" />
+          <Property Name="rgb_red" Type="Byte" Nullable="false" />
+          <Property Name="rgb_green" Type="Byte" Nullable="false" />
+          <Property Name="rgb_blue" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" FromRole="DefaultColor" ToRole="NewProject" />
         </EntityType>
         <EntityType Name="GlobalColor">
           <Key>
-            <PropertyRef Name="id_choosenColor" />
+            <PropertyRef Name="id_color" />
           </Key>
-          <Property Name="id_choosenColor" Type="Int32" Nullable="false" />
+          <Property Name="id_color" Type="Int32" Nullable="false" />
+          <Property Name="id_values" Type="Int32" />
           <Property Name="choosenColorRed" Type="Byte" Nullable="false" />
           <Property Name="choosenColorGreen" Type="Byte" Nullable="false" />
           <Property Name="choosenColorBlue" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="GlobalValue" Relationship="ProjektSemestralnyDBModel.Key_GlobalColors_id_values" FromRole="GlobalColor" ToRole="GlobalValue" />
+        </EntityType>
+        <EntityType Name="GlobalValue">
+          <Key>
+            <PropertyRef Name="id_values" />
+          </Key>
+          <Property Name="id_values" Type="Int32" Nullable="false" />
+          <Property Name="actualProject" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GlobalColors" Relationship="ProjektSemestralnyDBModel.Key_GlobalColors_id_values" FromRole="GlobalValue" ToRole="GlobalColor" />
         </EntityType>
         <EntityType Name="NewColor">
           <Key>
-            <PropertyRef Name="id_kolor" />
+            <PropertyRef Name="id_newColor" />
           </Key>
-          <Property Name="id_kolor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_newColor" Type="Int32" Nullable="false" />
           <Property Name="rgb_red" Type="Byte" Nullable="false" />
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
           <Property Name="rgb_blue" Type="Byte" Nullable="false" />
         </EntityType>
-      </Schema>
+        <EntityType Name="NewProject">
+          <Key>
+            <PropertyRef Name="id_project" />
+          </Key>
+          <Property Name="id_project" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="boardSize" Type="Int32" Nullable="false" />
+          <Property Name="squareSize" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BoardColors" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="NewProject" ToRole="BoardColor" />
+          <NavigationProperty Name="DefaultColors" Relationship="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" FromRole="NewProject" ToRole="DefaultColor" />
+          <NavigationProperty Name="SquareFills" Relationship="ProjektSemestralnyDBModel.Key_SquareFill_id_project" FromRole="NewProject" ToRole="SquareFill" />
+        </EntityType>
+        <EntityType Name="SquareFill">
+          <Key>
+            <PropertyRef Name="id_defaultSquareFill" />
+          </Key>
+          <Property Name="id_project" Type="Int32" Nullable="false" />
+          <Property Name="id_defaultSquareFill" Type="Int32" Nullable="false" />
+          <Property Name="defaultRed" Type="Byte" Nullable="false" />
+          <Property Name="defaultGreen" Type="Byte" Nullable="false" />
+          <Property Name="defaultBlue" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_SquareFill_id_project" FromRole="SquareFill" ToRole="NewProject" />
+        </EntityType>
+        <Association Name="Key_BoardColors_id_project">
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="0..1" />
+          <End Type="ProjektSemestralnyDBModel.BoardColor" Role="BoardColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="BoardColor">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_DefaultColors_id_project">
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="0..1" />
+          <End Type="ProjektSemestralnyDBModel.DefaultColor" Role="DefaultColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="DefaultColor">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_GlobalColors_id_values">
+          <End Type="ProjektSemestralnyDBModel.GlobalValue" Role="GlobalValue" Multiplicity="0..1" />
+          <End Type="ProjektSemestralnyDBModel.GlobalColor" Role="GlobalColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GlobalValue">
+              <PropertyRef Name="id_values" />
+            </Principal>
+            <Dependent Role="GlobalColor">
+              <PropertyRef Name="id_values" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_SquareFill_id_project">
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="1" />
+          <End Type="ProjektSemestralnyDBModel.SquareFill" Role="SquareFill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="SquareFill">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ProjektSemestralnyDBModelStoreContainer" CdmEntityContainer="ProjektSemestralnyDBEntities" >
-          <EntitySetMapping Name="NewProjects">
-            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.NewProject">
-              <MappingFragment StoreEntitySet="NewProject">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="defaultSquareFill" ColumnName="defaultSquareFill" />
-                <ScalarProperty Name="squareSize" ColumnName="squareSize" />
-                <ScalarProperty Name="boardSize" ColumnName="boardSize" />
-                <ScalarProperty Name="projectName" ColumnName="projectName" />
-                <ScalarProperty Name="ID_project" ColumnName="ID_project" />
+          <EntitySetMapping Name="BoardColors">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.BoardColor">
+              <MappingFragment StoreEntitySet="BoardColors">
+                <ScalarProperty Name="rgb_blue" ColumnName="rgb_blue" />
+                <ScalarProperty Name="rgb_green" ColumnName="rgb_green" />
+                <ScalarProperty Name="rgb_red" ColumnName="rgb_red" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
+                <ScalarProperty Name="id_boardColors" ColumnName="id_boardColors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefaultColors">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.DefaultColor">
+              <MappingFragment StoreEntitySet="DefaultColors">
+                <ScalarProperty Name="rgb_blue" ColumnName="rgb_blue" />
+                <ScalarProperty Name="rgb_green" ColumnName="rgb_green" />
+                <ScalarProperty Name="rgb_red" ColumnName="rgb_red" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
+                <ScalarProperty Name="id_defaultColor" ColumnName="id_defaultColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlobalColors">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.GlobalColor">
+              <MappingFragment StoreEntitySet="GlobalColors">
+                <ScalarProperty Name="choosenColorBlue" ColumnName="choosenColorBlue" />
+                <ScalarProperty Name="choosenColorGreen" ColumnName="choosenColorGreen" />
+                <ScalarProperty Name="choosenColorRed" ColumnName="choosenColorRed" />
+                <ScalarProperty Name="id_values" ColumnName="id_values" />
+                <ScalarProperty Name="id_color" ColumnName="id_color" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GlobalValues">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.GlobalValue">
               <MappingFragment StoreEntitySet="GlobalValues">
-                <ScalarProperty Name="ChoosenProject" ColumnName="ChoosenProject" />
-                <ScalarProperty Name="Id_values" ColumnName="Id_values" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GlobalColors">
-            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.GlobalColor">
-              <MappingFragment StoreEntitySet="GlobalColor">
-                <ScalarProperty Name="choosenColorBlue" ColumnName="choosenColorBlue" />
-                <ScalarProperty Name="choosenColorGreen" ColumnName="choosenColorGreen" />
-                <ScalarProperty Name="choosenColorRed" ColumnName="choosenColorRed" />
-                <ScalarProperty Name="id_choosenColor" ColumnName="id_choosenColor" />
+                <ScalarProperty Name="actualProject" ColumnName="actualProject" />
+                <ScalarProperty Name="id_values" ColumnName="id_values" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -135,7 +348,29 @@
                 <ScalarProperty Name="rgb_blue" ColumnName="rgb_blue" />
                 <ScalarProperty Name="rgb_green" ColumnName="rgb_green" />
                 <ScalarProperty Name="rgb_red" ColumnName="rgb_red" />
-                <ScalarProperty Name="id_kolor" ColumnName="id_kolor" />
+                <ScalarProperty Name="id_newColor" ColumnName="id_newColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewProjects">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.NewProject">
+              <MappingFragment StoreEntitySet="NewProject">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="squareSize" ColumnName="squareSize" />
+                <ScalarProperty Name="boardSize" ColumnName="boardSize" />
+                <ScalarProperty Name="projectName" ColumnName="projectName" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SquareFills">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.SquareFill">
+              <MappingFragment StoreEntitySet="SquareFill">
+                <ScalarProperty Name="defaultBlue" ColumnName="defaultBlue" />
+                <ScalarProperty Name="defaultGreen" ColumnName="defaultGreen" />
+                <ScalarProperty Name="defaultRed" ColumnName="defaultRed" />
+                <ScalarProperty Name="id_defaultSquareFill" ColumnName="id_defaultSquareFill" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

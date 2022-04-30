@@ -64,8 +64,8 @@ namespace ProjektSemestralny
                         boardSize = sizeBoardNumber,
                         description = desc,
                         squareSize = sizeSquareNumber,
-                        defaultSquareFill = defaultSquareColor.SelectedItem.ToString()
                     };
+                    
                     db.NewProjects.Add(newItem);
                     db.SaveChanges();
 

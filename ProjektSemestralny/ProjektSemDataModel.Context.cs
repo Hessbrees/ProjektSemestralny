@@ -25,9 +25,12 @@ namespace ProjektSemestralny
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<NewProject> NewProjects { get; set; }
-        public virtual DbSet<GlobalValue> GlobalValues { get; set; }
+        public virtual DbSet<BoardColor> BoardColors { get; set; }
+        public virtual DbSet<DefaultColor> DefaultColors { get; set; }
         public virtual DbSet<GlobalColor> GlobalColors { get; set; }
+        public virtual DbSet<GlobalValue> GlobalValues { get; set; }
         public virtual DbSet<NewColor> NewColors { get; set; }
+        public virtual DbSet<NewProject> NewProjects { get; set; }
+        public virtual DbSet<SquareFill> SquareFills { get; set; }
     }
 }

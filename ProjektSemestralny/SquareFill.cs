@@ -12,11 +12,14 @@ namespace ProjektSemestralny
     using System;
     using System.Collections.Generic;
     
-    public partial class NewColor
+    public partial class SquareFill
     {
-        public int id_newColor { get; set; }
-        public byte rgb_red { get; set; }
-        public byte rgb_green { get; set; }
-        public byte rgb_blue { get; set; }
+        public int id_project { get; set; }
+        public int id_defaultSquareFill { get; set; }
+        public byte defaultRed { get; set; }
+        public byte defaultGreen { get; set; }
+        public byte defaultBlue { get; set; }
+    
+        public virtual NewProject NewProject { get; set; }
     }
 }

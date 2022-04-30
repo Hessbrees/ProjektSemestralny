@@ -14,7 +14,16 @@ namespace ProjektSemestralny
     
     public partial class GlobalValue
     {
-        public int Id_values { get; set; }
-        public int ChoosenProject { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GlobalValue()
+        {
+            this.GlobalColors = new HashSet<GlobalColor>();
+        }
+    
+        public int id_values { get; set; }
+        public int actualProject { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GlobalColor> GlobalColors { get; set; }
     }
 }

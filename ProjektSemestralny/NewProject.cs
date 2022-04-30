@@ -14,11 +14,25 @@ namespace ProjektSemestralny
     
     public partial class NewProject
     {
-        public int ID_project { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NewProject()
+        {
+            this.BoardColors = new HashSet<BoardColor>();
+            this.DefaultColors = new HashSet<DefaultColor>();
+            this.SquareFills = new HashSet<SquareFill>();
+        }
+    
+        public int id_project { get; set; }
         public string projectName { get; set; }
         public int boardSize { get; set; }
         public int squareSize { get; set; }
-        public string defaultSquareFill { get; set; }
         public bool description { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BoardColor> BoardColors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DefaultColor> DefaultColors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SquareFill> SquareFills { get; set; }
     }
 }

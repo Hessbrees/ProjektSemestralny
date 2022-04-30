@@ -14,9 +14,12 @@ namespace ProjektSemestralny
     
     public partial class GlobalColor
     {
-        public int id_choosenColor { get; set; }
+        public int id_color { get; set; }
+        public Nullable<int> id_values { get; set; }
         public byte choosenColorRed { get; set; }
         public byte choosenColorGreen { get; set; }
         public byte choosenColorBlue { get; set; }
+    
+        public virtual GlobalValue GlobalValue { get; set; }
     }
 }
