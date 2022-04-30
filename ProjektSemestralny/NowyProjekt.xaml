@@ -24,16 +24,21 @@
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Rozmiar Kafelka" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <ComboBox x:Name="defaultSquareColor" HorizontalAlignment="Left" Margin="130,140,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem x:Name="white" Content="Biały" HorizontalAlignment="Left" Width="118"/>
-        </ComboBox>
+        
         <TextBlock HorizontalAlignment="Left" Margin="10,140,0,0" Text="Wypełnienie Kafelka" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="190,140,0,0" Text="Czerwony" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="190,165,0,0" Text="Zielony" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="190,190,0,0" Text="Niebieski" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <ComboBox x:Name="Description" HorizontalAlignment="Left" Margin="130,170,0,0" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="redFill" HorizontalAlignment="Left" Margin="130,140,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="greenFill" HorizontalAlignment="Left" Margin="130,165,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <TextBox x:Name="blueFill" HorizontalAlignment="Left" Margin="130,190,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        
+        <ComboBox x:Name="Description" HorizontalAlignment="Left" Margin="130,220,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem x:Name="noDescription" Content="Nie" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem x:Name="yesDescription" Content="Tak" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="10,170,0,0" Text="Opis" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,220,0,0" Text="Opis" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
         <Button Content="Utwórz" HorizontalAlignment="Left" Margin="70,280,0,0" VerticalAlignment="Top" Width="70" Height="20" Click="Button_Click_1"/>
         <Button Content="Zamknij" HorizontalAlignment="Right" Margin="0,280,70,0" VerticalAlignment="Top" Width="70" Height="20" Click="Button_Click"/>

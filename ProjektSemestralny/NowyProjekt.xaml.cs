@@ -36,13 +36,26 @@ namespace ProjektSemestralny
         }
         private void newProject()
         {
+                byte green = 0;byte red = 0;byte blue = 0;
+            try
+            {
+                if(greenFill != null) 
+                    green = byte.Parse(greenFill.Text);
+                if (redFill != null)
+                    red = byte.Parse(redFill.Text);
+                if (blueFill != null)
+                    blue = byte.Parse(blueFill.Text);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Wpisano blędne wartości kolorów!");
+            }
 
             if (
                 projectName.Text != ""
                 & sizeBoard.SelectedItem != null
                 & squareSize.SelectedItem != null
                 & Description.SelectedItem != null
-                & defaultSquareColor != null
                 )
             {
                 if (projectName.Text.Length > 15) MessageBox.Show("Nazwa projektu nie może mieć więcej niż 15 znaków!");
@@ -65,7 +78,13 @@ namespace ProjektSemestralny
                         description = desc,
                         squareSize = sizeSquareNumber,
                     };
-                    
+                    SquareFill newSquare = new SquareFill()
+                    {
+                        defaultRed = red ,
+                        defaultGreen=green,
+                        defaultBlue =blue
+                    };
+                    db.SquareFills.Add(newSquare);
                     db.NewProjects.Add(newItem);
                     db.SaveChanges();
 
