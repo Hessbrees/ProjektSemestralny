@@ -58,8 +58,7 @@ namespace ProjektSemestralny
                         if (idNumer == projectList.SelectedIndex)
                         {
                             projectList.Items.Remove(item);
-                            db.NewProjects.Remove(item);
-                            db.SquareFills.Remove(s_item);
+
                             var def = from d in db.DefaultColors
                                       where d.id_project == item.id_project
                                       select d;
@@ -67,6 +66,8 @@ namespace ProjektSemestralny
                             {
                                 db.DefaultColors.Remove(d_item);
                             }
+                            db.NewProjects.Remove(item);
+                            db.SquareFills.Remove(s_item);
                         }
                         idNumer++;
                     }

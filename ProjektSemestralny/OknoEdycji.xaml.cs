@@ -135,6 +135,7 @@ namespace ProjektSemestralny
                             }
                         }
                 }
+            MessageBox.Show("Wczytano!");
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

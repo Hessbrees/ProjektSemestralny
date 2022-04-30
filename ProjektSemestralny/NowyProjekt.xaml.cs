@@ -67,7 +67,11 @@ namespace ProjektSemestralny
                     bool desc = false;
                     if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 640;
 
-                    if (squareSize.SelectedItem == squareSize1) sizeSquareNumber = sizeBoardNumber/ 20;
+                    if (squareSize.SelectedItem == squareSize128) sizeSquareNumber = sizeBoardNumber/ 128;
+                    else if (squareSize.SelectedItem == squareSize64) sizeSquareNumber = sizeBoardNumber/ 64;
+                    else if (squareSize.SelectedItem == squareSize32) sizeSquareNumber = sizeBoardNumber/ 32;
+                    else if (squareSize.SelectedItem == squareSize20) sizeSquareNumber = sizeBoardNumber/ 20;
+                    else if (squareSize.SelectedItem == squareSize16) sizeSquareNumber = sizeBoardNumber/ 16;
 
                     if (Description.SelectedItem == yesDescription) desc = true;
 
