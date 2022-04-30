@@ -87,8 +87,7 @@ namespace ProjektSemestralny
 
             var proj = from p in db.NewProjects
                        select p;
-
-
+            byte red = 0; byte green = 0; byte blue = 0;
 
             foreach (var glob in globValue)
                 foreach (var item in proj)
@@ -98,12 +97,23 @@ namespace ProjektSemestralny
                         {
                             for (int j = 0; j < item.boardSize / item.squareSize; j++)
                             {
+                                var fl = from f in db.SquareFills
+                                         where f.id_project == item.id_project
+                                         select f;
+                                if (i == 0 & j == 0)
+                                    foreach (var color in fl)
+                                    {
+                                        red = color.defaultRed;
+                                        green = color.defaultGreen;
+                                        blue = color.defaultBlue;
+                                    }
                                 Rectangle r = new Rectangle
                                 {
                                     Height = item.squareSize,
                                     Width = item.squareSize,
-                                    Fill = new SolidColorBrush(Colors.Black)
+                                    Fill = new SolidColorBrush(Color.FromRgb(red, green, blue))
                                 };
+
                                 r.VerticalAlignment = VerticalAlignment.Top;
                                 r.HorizontalAlignment = HorizontalAlignment.Left;
                                 r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);

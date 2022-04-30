@@ -67,7 +67,6 @@ namespace ProjektSemestralny
                             {
                                 db.DefaultColors.Remove(d_item);
                             }
-
                         }
                         idNumer++;
                     }
