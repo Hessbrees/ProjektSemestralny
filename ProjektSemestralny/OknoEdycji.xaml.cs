@@ -84,8 +84,12 @@ namespace ProjektSemestralny
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             var globValue = from l in db.GlobalValues
                             select l;
+
             var proj = from p in db.NewProjects
                        select p;
+
+
+
             foreach (var glob in globValue)
                 foreach (var item in proj)
                 {

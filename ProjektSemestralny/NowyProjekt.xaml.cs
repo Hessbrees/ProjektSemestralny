@@ -61,6 +61,7 @@ namespace ProjektSemestralny
                 if (projectName.Text.Length > 15) MessageBox.Show("Nazwa projektu nie może mieć więcej niż 15 znaków!");
                 else
                 {
+                    // przypisanie wartosci początkowych w bazie danych
                     int sizeBoardNumber = 0;
                     int sizeSquareNumber = 0;
                     bool desc = false;
@@ -86,6 +87,41 @@ namespace ProjektSemestralny
                     };
                     db.SquareFills.Add(newSquare);
                     db.NewProjects.Add(newItem);
+
+                    // Sprawdzenie czy aktualna tablica z globalnymi wartościami jest pusta
+                    var globValue = from l in db.GlobalValues
+                                    select l;
+                    if (globValue.Any() == false)
+                    {
+                        GlobalValue global = new GlobalValue()
+                        {
+                            actualProject = 0,
+                        };
+                        db.GlobalValues.Add(global);
+                        db.SaveChanges();
+                    }
+
+                    // przypisanie kolorów startowych wypełniania
+                    var globCol = from c in db.GlobalColors
+                                  select c;
+                    if (globCol.Any() == false)
+                    {
+                        GlobalColor color = new GlobalColor()
+                        {
+                            choosenColorRed = 255,
+                            choosenColorBlue = 255,
+                            choosenColorGreen = 255,
+                        };
+                        db.GlobalColors.Add(color);
+                        db.SaveChanges();
+                    }
+
+                    foreach (var item in globCol)
+                    {
+                        item.choosenColorRed = 255;
+                        item.choosenColorBlue = 255;
+                        item.choosenColorGreen = 255;
+                    }
                     db.SaveChanges();
 
                     Close();

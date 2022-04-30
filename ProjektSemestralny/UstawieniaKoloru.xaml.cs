@@ -153,10 +153,6 @@ namespace ProjektSemestralny
                 }
                 db.SaveChanges();
 
-                /*                Owner.Close();
-                                OknoEdycji win = new OknoEdycji();
-                                win.Show();*/
-
                 Close();
             }
             else MessageBox.Show("Nie wybrano koloru!");
