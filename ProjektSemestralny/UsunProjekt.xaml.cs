@@ -44,26 +44,33 @@ namespace ProjektSemestralny
             if (projectList.SelectedItem != null)
             {
                 ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-                var def = from d in db.DefaultColors
-                          select d;
+
+
                 var square = from s in db.SquareFills
                              select s;
                 var proj = from p in db.NewProjects
                            select p;
                 int idNumer = 0;
-                foreach(var d_item in def)
-                foreach(var s_item in square)
-                foreach (var item in proj)
-                {
-                    if (idNumer == projectList.SelectedIndex)
+                
+                foreach (var s_item in square)
+                    foreach (var item in proj)
                     {
-                        projectList.Items.Remove(item);
-                        db.NewProjects.Remove(item);
-                        db.SquareFills.Remove(s_item);
-                        db.DefaultColors.Remove(d_item);
+                        if (idNumer == projectList.SelectedIndex)
+                        {
+                            projectList.Items.Remove(item);
+                            db.NewProjects.Remove(item);
+                            db.SquareFills.Remove(s_item);
+                            var def = from d in db.DefaultColors
+                                      where d.id_project == item.id_project
+                                      select d;
+                            foreach (var d_item in def)
+                            {
+                                db.DefaultColors.Remove(d_item);
+                            }
+
+                        }
+                        idNumer++;
                     }
-                    idNumer++;
-                }
                 db.SaveChanges();
                 Close();
             }
