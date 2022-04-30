@@ -147,6 +147,53 @@ namespace ProjektSemestralny
 
         private void cl0_Checked(object sender, RoutedEventArgs e)
         {
+            //domyslny rb
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l.actualProject;
+
+            var fl = from f in db.SquareFills
+                     select f;
+            var globColor = from c in db.GlobalColors
+                            select c;
+            foreach (var item in globValue)
+                foreach (var colors in globColor)
+                    foreach (var color in fl)
+                    {
+                        if (item == color.id_project)
+                        {
+                            colors.choosenColorRed = color.defaultRed;
+                            colors.choosenColorGreen = color.defaultGreen;
+                            colors.choosenColorBlue = color.defaultBlue;
+
+                        }
+                    }
+            db.SaveChanges();
+            refreshColor();
+        }
+
+        private void cl1_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cl2_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cl3_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cl4_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cl5_Checked(object sender, RoutedEventArgs e)
+        {
 
         }
     }
