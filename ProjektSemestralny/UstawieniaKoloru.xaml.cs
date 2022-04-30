@@ -20,12 +20,15 @@ namespace ProjektSemestralny
     /// </summary>
     public partial class UstawieniaKoloru : Window
     {
-        public UstawieniaKoloru()
+        private OknoEdycji _ok;
+
+        public UstawieniaKoloru(OknoEdycji OK)
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             RefreshList();
-            
+            _ok = OK;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -138,14 +141,21 @@ namespace ProjektSemestralny
                             glob.choosenColorRed = item.rgb_red;
                             glob.choosenColorGreen = item.rgb_green;
                             glob.choosenColorBlue = item.rgb_blue;
+
+                            Brush bar = new SolidColorBrush(Color.FromRgb(
+                            glob.choosenColorRed,
+                            glob.choosenColorGreen,
+                            glob.choosenColorBlue));
+
+                            _ok.kwadracik = bar;
                         }
                     idNumer++;
                 }
                 db.SaveChanges();
 
-/*                Owner.Close();
-                OknoEdycji win = new OknoEdycji();
-                win.Show();*/
+                /*                Owner.Close();
+                                OknoEdycji win = new OknoEdycji();
+                                win.Show();*/
 
                 Close();
             }

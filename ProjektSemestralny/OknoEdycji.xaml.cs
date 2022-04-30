@@ -18,16 +18,39 @@ namespace ProjektSemestralny
     /// <summary>
     /// Interaction logic for OknoEdycji.xaml
     /// </summary>
-    public partial class OknoEdycji : Window
+    public partial class OknoEdycji : Window, INotifyPropertyChanged
     {
         public OknoEdycji()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            DataContext = this;
 
             refreshColor();
 
         }
+
+        private Brush _kwadracik;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        }
+
+        public Brush kwadracik
+        {
+            get { return _kwadracik; }
+            set
+            {
+                _kwadracik = value;
+                OnPropertyChanged(nameof(kwadracik));
+            }
+        }
+
         /// <summary>
         /// Odświeżenie koloru w oknie edycji
         /// </summary>
@@ -38,7 +61,7 @@ namespace ProjektSemestralny
                             select l;
             foreach (var value in globValue)
             {
-                actualColor.Fill = new SolidColorBrush(Color.FromRgb(
+                kwadracik = new SolidColorBrush(Color.FromRgb(
                 value.choosenColorRed, value.choosenColorGreen, value.choosenColorBlue));
 
             }
@@ -51,7 +74,7 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            UstawieniaKoloru win = new UstawieniaKoloru();
+            UstawieniaKoloru win = new UstawieniaKoloru(this);
             win.Owner = this;
             win.ShowDialog();
         }
