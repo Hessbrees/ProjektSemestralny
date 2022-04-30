@@ -142,9 +142,11 @@ namespace ProjektSemestralny
                     idNumer++;
                 }
                 db.SaveChanges();
-                Owner.Close();
+
+/*                Owner.Close();
                 OknoEdycji win = new OknoEdycji();
-                win.Show();
+                win.Show();*/
+
                 Close();
             }
             else MessageBox.Show("Nie wybrano koloru!");

@@ -88,8 +88,19 @@ namespace ProjektSemestralny
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Rectangle tb = e.Source as Rectangle;
-            tb.Fill = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalColors
+                            select l;
+            foreach (var gc in globValue)
+            {
+                Rectangle tb = e.Source as Rectangle;
+                tb.Fill = new SolidColorBrush(Color.FromRgb(
+                    gc.choosenColorRed,
+                    gc.choosenColorGreen,
+                    gc.choosenColorBlue));
+            }
+
+            refreshColor();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
