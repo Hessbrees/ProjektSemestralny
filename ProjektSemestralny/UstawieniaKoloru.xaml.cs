@@ -11,9 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.ComponentModel;
 namespace ProjektSemestralny
 {
+
     /// <summary>
     /// Interaction logic for UstawieniaKoloru.xaml
     /// </summary>
@@ -24,7 +25,7 @@ namespace ProjektSemestralny
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             RefreshList();
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,9 +41,9 @@ namespace ProjektSemestralny
                 byte green = byte.Parse(greenColor.Text);
                 byte blue = byte.Parse(blueColor.Text);
                 actualColor.Fill = new SolidColorBrush(Color.FromRgb(
-                red, green,blue));
+                red, green, blue));
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Błędna wartość!");
                 return;
@@ -141,13 +142,15 @@ namespace ProjektSemestralny
                     idNumer++;
                 }
                 db.SaveChanges();
-
+                Owner.Close();
+                OknoEdycji win = new OknoEdycji();
+                win.Show();
                 Close();
-
-                OknoEdycji oe = new OknoEdycji();
-                oe.refreshColor();
             }
             else MessageBox.Show("Nie wybrano koloru!");
         }
+
+
     }
+
 }

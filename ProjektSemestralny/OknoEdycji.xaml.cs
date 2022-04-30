@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace ProjektSemestralny
 {
@@ -39,6 +40,7 @@ namespace ProjektSemestralny
             {
                 actualColor.Fill = new SolidColorBrush(Color.FromRgb(
                 value.choosenColorRed, value.choosenColorGreen, value.choosenColorBlue));
+
             }
 
         }
@@ -50,6 +52,7 @@ namespace ProjektSemestralny
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             UstawieniaKoloru win = new UstawieniaKoloru();
+            win.Owner = this;
             win.ShowDialog();
         }
 
@@ -93,5 +96,6 @@ namespace ProjektSemestralny
         {
             AddSquare();
         }
+
     }
 }
