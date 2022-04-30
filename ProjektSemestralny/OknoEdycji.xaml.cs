@@ -74,9 +74,22 @@ namespace ProjektSemestralny
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            UstawieniaKoloru win = new UstawieniaKoloru(this);
-            win.Owner = this;
-            win.ShowDialog();
+            if (cl0.IsChecked == false)
+            {
+                if (cl1.IsChecked == true |
+                   cl2.IsChecked == true |
+                   cl3.IsChecked == true |
+                   cl4.IsChecked == true |
+                   cl5.IsChecked == true
+                    )
+                {
+                    UstawieniaKoloru win = new UstawieniaKoloru(this);
+                    win.Owner = this;
+                    win.ShowDialog();
+                }
+                else MessageBox.Show("Nie wybrano koloru!");
+            }
+            else MessageBox.Show("Nie można zmienić domyślnego koloru!");
         }
 
         private void AddSquare()
