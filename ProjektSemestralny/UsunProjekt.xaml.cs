@@ -44,15 +44,19 @@ namespace ProjektSemestralny
             if (projectList.SelectedItem != null)
             {
                 ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+                var square = from s in db.SquareFills
+                             select s;
                 var proj = from p in db.NewProjects
                            select p;
                 int idNumer = 0;
+                foreach(var s_item in square)
                 foreach (var item in proj)
                 {
                     if (idNumer == projectList.SelectedIndex)
                     {
                         projectList.Items.Remove(item);
                         db.NewProjects.Remove(item);
+                        db.SquareFills.Remove(s_item);
                     }
                     idNumer++;
                 }
@@ -60,6 +64,8 @@ namespace ProjektSemestralny
                 Close();
             }
             else MessageBox.Show("Nie wybrano projektu!");
+
+
         }
     }
 }
