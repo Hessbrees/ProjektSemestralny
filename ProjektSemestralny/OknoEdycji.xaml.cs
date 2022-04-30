@@ -131,5 +131,9 @@ namespace ProjektSemestralny
             AddSquare();
         }
 
+        private void cl0_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
