@@ -193,6 +193,8 @@ namespace ProjektSemestralny
                             colors.choosenColorGreen = col.rgb_green;
                         }
                     }
+            db.SaveChanges();
+            refreshColor();
         }
         private void cl1_Checked(object sender, RoutedEventArgs e) => changeColor(1);
         private void cl2_Checked(object sender, RoutedEventArgs e) => changeColor(2);

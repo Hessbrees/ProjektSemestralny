@@ -146,19 +146,50 @@ namespace ProjektSemestralny
                             glob.choosenColorRed,
                             glob.choosenColorGreen,
                             glob.choosenColorBlue));
-
+                            
                             _ok.kwadracik = bar;
                         }
                     idNumer++;
                 }
+                int position = 0;
+
                 db.SaveChanges();
 
+                if (_ok.cl1.IsChecked == true) position = 1;
+                if (_ok.cl2.IsChecked == true) position = 2;
+                if (_ok.cl3.IsChecked == true) position = 3;
+                if (_ok.cl4.IsChecked == true) position = 4;
+                if (_ok.cl5.IsChecked == true) position = 5;
+
+                changeColor(position);
                 Close();
             }
             else MessageBox.Show("Nie wybrano koloru!");
         }
+        private void changeColor(int i)
+        {
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l.actualProject;
+            var globColor = from c in db.GlobalColors
+                            select c;
+            var def = from d in db.DefaultColors
+                      where d.positionNumber == i
+                      select d;
 
-
+            foreach (var item in globValue)
+                foreach (var colors in globColor)
+                    foreach (var col in def)
+                    {
+                        if (item == col.id_project)
+                        {
+                            col.rgb_blue = colors.choosenColorBlue;
+                            col.rgb_red = colors.choosenColorRed;
+                            col.rgb_green = colors.choosenColorGreen;
+                        }
+                    }
+            db.SaveChanges();
+        }
     }
 
 }
