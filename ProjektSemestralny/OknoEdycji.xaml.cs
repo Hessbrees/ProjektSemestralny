@@ -171,30 +171,33 @@ namespace ProjektSemestralny
             db.SaveChanges();
             refreshColor();
         }
-
-        private void cl1_Checked(object sender, RoutedEventArgs e)
+        private void changeColor(int i)
         {
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l.actualProject;
+            var globColor = from c in db.GlobalColors
+                            select c;
+            var def = from d in db.DefaultColors
+                      where d.positionNumber == i
+                      select d;
 
+            foreach (var item in globValue)
+                foreach (var colors in globColor)
+                    foreach (var col in def)
+                    {
+                        if (item == col.id_project)
+                        {
+                            colors.choosenColorBlue = col.rgb_blue;
+                            colors.choosenColorRed = col.rgb_red;
+                            colors.choosenColorGreen = col.rgb_green;
+                        }
+                    }
         }
-
-        private void cl2_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cl3_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cl4_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cl5_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private void cl1_Checked(object sender, RoutedEventArgs e) => changeColor(1);
+        private void cl2_Checked(object sender, RoutedEventArgs e) => changeColor(2);
+        private void cl3_Checked(object sender, RoutedEventArgs e) => changeColor(3);
+        private void cl4_Checked(object sender, RoutedEventArgs e) => changeColor(4);
+        private void cl5_Checked(object sender, RoutedEventArgs e) => changeColor(5);
     }
 }
