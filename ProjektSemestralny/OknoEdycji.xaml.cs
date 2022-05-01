@@ -153,6 +153,29 @@ namespace ProjektSemestralny
                                 k++;
                             }
 
+            //reset bazy
+            var proj2 = from p in db.NewProjects
+                        select p;
+            var globCol = from l in db.SquareFills
+                          select l;
+
+            foreach (var gv in globValue)
+                foreach (var item in proj2)
+                    if (item.id_project == gv.actualProject)
+                    {
+                        var board = from b in db.BoardColors
+                                    where b.id_project == gv.actualProject
+                                    select b;
+
+                        foreach (var gc in globCol)
+                            foreach (var square in board)
+                            {
+                                square.rgb_blue = gc.defaultBlue;
+                                square.rgb_red = gc.defaultRed;
+                                square.rgb_green = gc.defaultGreen;
+                            }
+                    }
+            db.SaveChanges();
 
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
