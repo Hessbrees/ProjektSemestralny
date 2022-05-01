@@ -146,20 +146,19 @@ namespace ProjektSemestralny
                     //Zapisanie elementów nowej planszy
                     var bor = from b in db.BoardColors
                               select b;
-                    if (bor.Any() == false)
+
+                    for (int i = 1; i <= (sizeBoardNumber / sizeSquareNumber) * (sizeBoardNumber / sizeSquareNumber); i++)
                     {
-                        for (int i = 1; i <= (sizeBoardNumber/sizeSquareNumber)* (sizeBoardNumber / sizeSquareNumber); i++)
+                        BoardColor boardCol = new BoardColor()
                         {
-                            BoardColor boardCol = new BoardColor()
-                            {
-                                rgb_blue = blue,
-                                rgb_green = green,
-                                rgb_red = red,
-                                square_number = i
-                            };
-                            db.BoardColors.Add(boardCol);
-                        }
+                            rgb_blue = blue,
+                            rgb_green = green,
+                            rgb_red = red,
+                            square_number = i
+                        };
+                        db.BoardColors.Add(boardCol);
                     }
+
                     db.SaveChanges();
 
                     Close();

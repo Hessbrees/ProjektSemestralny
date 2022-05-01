@@ -41,11 +41,7 @@ namespace ProjektSemestralny
                     MainLayer.Width = item2.boardSize;
                 }
             }
-
-
-
             DataContext = this;
-
             refreshColor();
 
         }
@@ -55,10 +51,8 @@ namespace ProjektSemestralny
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
-
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         }
 
         public Brush kwadracik
@@ -89,7 +83,7 @@ namespace ProjektSemestralny
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-             Close();
+            Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -182,7 +176,6 @@ namespace ProjektSemestralny
             // zapis w bazie danych
             Rectangle rec = e.Source as Rectangle;
 
-
             int k = 1;
 
             var globVal = from g in db.GlobalValues
@@ -209,8 +202,6 @@ namespace ProjektSemestralny
                             }
                     }
             db.SaveChanges();
-
-
             refreshColor();
         }
 
@@ -218,8 +209,6 @@ namespace ProjektSemestralny
         {
             // reset
             AddSquare();
-
-
         }
 
         private void cl0_Checked(object sender, RoutedEventArgs e)
@@ -282,7 +271,57 @@ namespace ProjektSemestralny
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             //Wczytaj
-            
+            MainLayer.Children.Clear();
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l;
+
+            var proj = from p in db.NewProjects
+                       select p;
+            byte red = 0; byte green = 0; byte blue = 0;
+            int k = 1;
+            int i = 0;
+            int j = 0;
+            foreach (var glob in globValue)
+                foreach (var item in proj)
+                    if (item.id_project == glob.actualProject)
+                    {
+                        var fl = from f in db.BoardColors
+                                 where f.id_project == item.id_project
+                                 select f;
+
+                        foreach (var color in fl)
+                        {
+                            red = color.rgb_red;
+                            green = color.rgb_green;
+                            blue = color.rgb_blue;
+
+
+                            Rectangle r = new Rectangle
+                            {
+                                Height = item.squareSize,
+                                Width = item.squareSize,
+                                Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
+                                Name = "s" + k.ToString()
+
+                            };
+
+                            r.VerticalAlignment = VerticalAlignment.Top;
+                            r.HorizontalAlignment = HorizontalAlignment.Left;
+                            r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
+                            r.MouseLeftButtonDown += r_MouseLeftButtonDown;
+
+                            MainLayer.Children.Add(r);
+                            
+                            k++;
+                            if(i%item.squareSize == 0 & i!=0)
+                            {
+                                j++;
+                                i = 0;
+                            }
+                            i++;
+                        }
+                    }
 
 
             MessageBox.Show("Wczytano!");
