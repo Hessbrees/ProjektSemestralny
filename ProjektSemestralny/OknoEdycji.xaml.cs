@@ -121,7 +121,7 @@ namespace ProjektSemestralny
             var proj = from p in db.NewProjects
                        select p;
             byte red = 0; byte green = 0; byte blue = 0;
-            int k = 1;
+            int k = 0;
             foreach (var glob in globValue)
                 foreach (var item in proj)
                     if (item.id_project == glob.actualProject)
@@ -180,11 +180,12 @@ namespace ProjektSemestralny
                             }
                     }
             db.SaveChanges();
+            LoadBase();
 
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            int k = 1;
+            int k = 0;
             Rectangle rec = e.Source as Rectangle;
 
             // zmienianie kolorów
@@ -283,7 +284,7 @@ namespace ProjektSemestralny
             var proj = from p in db.NewProjects
                        select p;
             byte red = 0; byte green = 0; byte blue = 0;
-            int k = 1;
+            int k = 0;
             int i = 0;
             int j = 0;
             foreach (var glob in globValue)
@@ -331,10 +332,7 @@ namespace ProjektSemestralny
         {
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
 
-            var globValue = from l in db.GlobalColors
-                            select l;
-            int k = 1;
-
+            int k = 0;
             var globVal = from g in db.GlobalValues
                           select g;
             var proj = from p in db.NewProjects
@@ -347,15 +345,13 @@ namespace ProjektSemestralny
                         var board = from b in db.BoardColors
                                     where b.id_project == gv.actualProject
                                     select b;
-
-                        foreach (var gc in globValue)
                             foreach (var square in board)
                             {
                                 blue_color[k] = square.rgb_blue;
                                 red_color[k] = square.rgb_red;
                                 green_color[k] = square.rgb_green;
+                                k++;
                             }
-                        k++;
                     }
             db.SaveChanges();
         }
@@ -367,7 +363,7 @@ namespace ProjektSemestralny
 
             var globValue = from l in db.GlobalColors
                             select l;
-            int k = 1;
+            int k = 0;
 
             var globVal = from g in db.GlobalValues
                           select g;
