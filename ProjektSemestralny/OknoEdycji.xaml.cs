@@ -120,10 +120,8 @@ namespace ProjektSemestralny
             int k = 1;
             foreach (var glob in globValue)
                 foreach (var item in proj)
-                {
                     if (item.id_project == glob.actualProject)
                         for (int i = 0; i < item.boardSize / item.squareSize; i++)
-                        {
                             for (int j = 0; j < item.boardSize / item.squareSize; j++)
                             {
                                 var fl = from f in db.SquareFills
@@ -154,9 +152,8 @@ namespace ProjektSemestralny
                                 MainLayer.Children.Add(r);
                                 k++;
                             }
-                        }
-                }
-            MessageBox.Show("Wczytano!");
+
+
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -312,19 +309,16 @@ namespace ProjektSemestralny
                             r.MouseLeftButtonDown += r_MouseLeftButtonDown;
 
                             MainLayer.Children.Add(r);
-                            
+
                             k++;
-                            if(i%item.squareSize == 0 & i!=0)
+                            if (j % ((item.boardSize / item.squareSize) - 1) == 0 & j != 0)
                             {
-                                j++;
-                                i = 0;
+                                i++;
+                                j = 0;
                             }
-                            i++;
+                            else j++;
                         }
                     }
-
-
-            MessageBox.Show("Wczytano!");
         }
 
     }
