@@ -223,10 +223,3 @@ namespace ProjektSemestralny
         }
     }
 }
-
-
-//< ComboBoxItem x: Name = "squareSize128" Content = "1/128 Planszy" HorizontalAlignment = "Left" Width = "118" />
-//< ComboBoxItem x: Name = "squareSize64" Content = "1/64 Planszy" HorizontalAlignment = "Left" Width = "118" />
-//< ComboBoxItem x: Name = "squareSize32" Content = "1/32 Planszy" HorizontalAlignment = "Left" Width = "118" />
-//< ComboBoxItem x: Name = "squareSize20" Content = "1/20 Planszy" HorizontalAlignment = "Left" Width = "118" />
-//< ComboBoxItem x: Name = "squareSize16" Content = "1/16 Planszy" HorizontalAlignment = "Left" Width = "118" />
