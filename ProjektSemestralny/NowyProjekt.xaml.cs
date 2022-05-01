@@ -70,12 +70,12 @@ namespace ProjektSemestralny
                     else if (sizeBoard.SelectedItem == sizeBoard400) sizeBoardNumber = 400;
 
                     //if (squareSize.SelectedItem == squareSize128) sizeSquareNumber = sizeBoardNumber/ 128;
-                    if (squareSize.Name == "squareSize64") sizeSquareNumber = sizeBoardNumber / 64;
-                    else if (squareSize.Name == "squareSize80") sizeSquareNumber = sizeBoardNumber / 80;
-                    else if (squareSize.Name == "squareSize40") sizeSquareNumber = sizeBoardNumber / 40;
-                    else if (squareSize.Name == "squareSize32") sizeSquareNumber = sizeBoardNumber / 32;
-                    else if (squareSize.Name == "squareSize20") sizeSquareNumber = sizeBoardNumber / 20;
-                    else if (squareSize.Name == "squareSize16") sizeSquareNumber = sizeBoardNumber / 16;
+                    if (squareSize.Text == "1/64 Planszy") sizeSquareNumber = sizeBoardNumber / 64;
+                    else if (squareSize.Text== "1/80 Planszy") sizeSquareNumber = sizeBoardNumber / 80;
+                    else if (squareSize.Text == "1/40 Planszy") sizeSquareNumber = sizeBoardNumber / 40;
+                    else if (squareSize.Text == "1/32 Planszy") sizeSquareNumber = sizeBoardNumber / 32;
+                    else if (squareSize.Text == "1/20 Planszy") sizeSquareNumber = sizeBoardNumber / 20;
+                    else if (squareSize.Text == "1/16 Planszy") sizeSquareNumber = sizeBoardNumber / 16;
 
                     if (Description.SelectedItem == yesDescription) desc = true;
 
