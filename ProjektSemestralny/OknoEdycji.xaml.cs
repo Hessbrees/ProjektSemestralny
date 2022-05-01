@@ -20,9 +20,9 @@ namespace ProjektSemestralny
     /// </summary>
     public partial class OknoEdycji : Window, INotifyPropertyChanged
     {
-        private byte[] red_color;
-        private byte[] green_color;
-        private byte[] blue_color;
+        public byte[] red_color = new byte[10000];
+        public byte[] green_color = new byte[10000];
+        public byte[] blue_color = new byte[10000];
 
         public OknoEdycji()
         {
@@ -47,7 +47,7 @@ namespace ProjektSemestralny
             }
             DataContext = this;
             refreshColor();
-
+            LoadBase();
         }
 
         private Brush _kwadracik;
@@ -329,14 +329,7 @@ namespace ProjektSemestralny
         }
         private void LoadBase()
         {
-
-        }
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            // zapis w bazie danych
-
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-            Rectangle rec = e.Source as Rectangle;
 
             var globValue = from l in db.GlobalColors
                             select l;
@@ -353,7 +346,40 @@ namespace ProjektSemestralny
                     {
                         var board = from b in db.BoardColors
                                     where b.id_project == gv.actualProject
-                                    where b.square_number == k
+                                    select b;
+
+                        foreach (var gc in globValue)
+                            foreach (var square in board)
+                            {
+                                blue_color[k] = square.rgb_blue;
+                                red_color[k] = square.rgb_red;
+                                green_color[k] = square.rgb_green;
+                            }
+                        k++;
+                    }
+            db.SaveChanges();
+        }
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            // zapis w bazie danych
+
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+
+            var globValue = from l in db.GlobalColors
+                            select l;
+            int k = 1;
+
+            var globVal = from g in db.GlobalValues
+                          select g;
+            var proj = from p in db.NewProjects
+                       select p;
+
+            foreach (var gv in globVal)
+                foreach (var item in proj)
+                    if (item.id_project == gv.actualProject)
+                    {
+                        var board = from b in db.BoardColors
+                                    where b.id_project == gv.actualProject
                                     select b;
 
                         foreach (var gc in globValue)
@@ -362,8 +388,9 @@ namespace ProjektSemestralny
                                 square.rgb_blue = blue_color[k];
                                 square.rgb_red = red_color[k];
                                 square.rgb_green = green_color[k];
+                                k++;
                             }
-                        k++;
+                        
                     }
             db.SaveChanges();
 
