@@ -28,12 +28,12 @@ namespace ProjektSemestralny
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             var globValue = from l in db.GlobalValues
                             select l;
-            foreach(var item in globValue)
+            foreach (var item in globValue)
             {
                 var proj = from p in db.NewProjects
                            where p.id_project == item.actualProject
                            select p;
-                foreach(var item2 in proj)
+                foreach (var item2 in proj)
                 {
                     OknoPar.Height = 140 + item2.boardSize;
                     OknoPar.Width = 160 + item2.boardSize;
@@ -89,10 +89,10 @@ namespace ProjektSemestralny
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result= MessageBox.Show(
+            MessageBoxResult result = MessageBox.Show(
                 "Niezapisane zmiany zostaną utracone. Chcesz zamknąć projekt?"
                 , "Uwaga!", MessageBoxButton.YesNo);
-            if(result == MessageBoxResult.Yes) Close();
+            if (result == MessageBoxResult.Yes) Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -126,7 +126,7 @@ namespace ProjektSemestralny
             var proj = from p in db.NewProjects
                        select p;
             byte red = 0; byte green = 0; byte blue = 0;
-
+            int k = 1;
             foreach (var glob in globValue)
                 foreach (var item in proj)
                 {
@@ -149,14 +149,19 @@ namespace ProjektSemestralny
                                 {
                                     Height = item.squareSize,
                                     Width = item.squareSize,
-                                    Fill = new SolidColorBrush(Color.FromRgb(red, green, blue))
+                                    Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
+                                    Name = "s" + k.ToString()
+
                                 };
 
                                 r.VerticalAlignment = VerticalAlignment.Top;
                                 r.HorizontalAlignment = HorizontalAlignment.Left;
                                 r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
                                 r.MouseLeftButtonDown += r_MouseLeftButtonDown;
+
+
                                 MainLayer.Children.Add(r);
+                                k++;
                             }
                         }
                 }
@@ -164,6 +169,7 @@ namespace ProjektSemestralny
         }
         void r_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            // zmienianie kolorów
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             var globValue = from l in db.GlobalColors
                             select l;
@@ -176,6 +182,45 @@ namespace ProjektSemestralny
                     gc.choosenColorBlue));
             }
 
+            // zapis w bazie danych
+            Rectangle rec = e.Source as Rectangle;
+
+
+            int k = 1;
+
+            var globVal = from g in db.GlobalValues
+                          select g;
+            var proj = from p in db.NewProjects
+                       select p;
+
+            foreach (var gv in globVal)
+                foreach (var item in proj)
+                    if (item.id_project == gv.actualProject)
+                        for (int i = 0; i < item.boardSize / item.squareSize; i++)
+                            for (int j = 0; j < item.boardSize / item.squareSize; j++)
+                            {
+                                if (k == int.Parse(rec.Name.Trim('s')))
+                                {
+                                    var board = from b in db.BoardColors
+                                                where b.id_project == gv.actualProject
+                                                where b.square_number == k
+                                                select b;
+
+                                    foreach (var gc in globValue)
+                                        foreach (var square in board)
+                                        {
+                                            square.rgb_blue = gc.choosenColorBlue;
+                                            square.rgb_red = gc.choosenColorRed;
+                                            square.rgb_green = gc.choosenColorGreen;
+                                        }
+                                    break;
+                                }
+                                k++;
+                            }
+
+            db.SaveChanges();
+
+
             refreshColor();
         }
 
@@ -183,6 +228,8 @@ namespace ProjektSemestralny
         {
             // reset
             AddSquare();
+
+
         }
 
         private void cl0_Checked(object sender, RoutedEventArgs e)
@@ -244,21 +291,8 @@ namespace ProjektSemestralny
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            //zapisz
-            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-            var globValue = from l in db.GlobalValues
-                            select l.actualProject;
-
-            var board = from b in db.BoardColors
-                        where b.id_project == globValue.First()
-                        select b;
-            foreach(var item in board)
-            {
-                item.rgb_blue = 255;
-                item.rgb_red = 255;
-                item.rgb_green = 255;
-            }
 
         }
+
     }
 }

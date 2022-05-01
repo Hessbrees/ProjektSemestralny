@@ -14,6 +14,7 @@
           <Property Name="rgb_red" Type="tinyint" Nullable="false" />
           <Property Name="rgb_green" Type="tinyint" Nullable="false" />
           <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
+          <Property Name="square_number" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="DefaultColors">
           <Key>
@@ -184,6 +185,7 @@
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
           <Property Name="rgb_blue" Type="Byte" Nullable="false" />
           <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="BoardColor" ToRole="NewProject" />
+          <Property Name="square_number" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="DefaultColor">
           <Key>
@@ -306,6 +308,7 @@
           <EntitySetMapping Name="BoardColors">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.BoardColor">
               <MappingFragment StoreEntitySet="BoardColors">
+                <ScalarProperty Name="square_number" ColumnName="square_number" />
                 <ScalarProperty Name="rgb_blue" ColumnName="rgb_blue" />
                 <ScalarProperty Name="rgb_green" ColumnName="rgb_green" />
                 <ScalarProperty Name="rgb_red" ColumnName="rgb_red" />

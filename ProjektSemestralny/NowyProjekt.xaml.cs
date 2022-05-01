@@ -154,7 +154,8 @@ namespace ProjektSemestralny
                             {
                                 rgb_blue = blue,
                                 rgb_green = green,
-                                rgb_red = red
+                                rgb_red = red,
+                                square_number = i
                             };
                             db.BoardColors.Add(boardCol);
                         }

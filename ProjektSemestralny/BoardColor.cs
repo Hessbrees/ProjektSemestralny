@@ -19,6 +19,7 @@ namespace ProjektSemestralny
         public byte rgb_red { get; set; }
         public byte rgb_green { get; set; }
         public byte rgb_blue { get; set; }
+        public int square_number { get; set; }
     
         public virtual NewProject NewProject { get; set; }
     }
