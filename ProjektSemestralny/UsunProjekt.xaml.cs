@@ -69,6 +69,13 @@ namespace ProjektSemestralny
                                      select s;
                         foreach (var s_item in square)
                             db.SquareFills.Remove(s_item);
+
+                        var board = from b in db.BoardColors
+                                  where b.id_project == item.id_project
+                                  select b;
+                        foreach (var b_item in board)
+                            db.BoardColors.Remove(b_item);
+
                         db.NewProjects.Remove(item);
                     }
                     idNumer++;
