@@ -85,6 +85,7 @@ namespace ProjektSemestralny
                         boardSize = sizeBoardNumber,
                         description = desc,
                         squareSize = sizeSquareNumber,
+                        descNew = "Opis"
                     };
                     SquareFill newSquare = new SquareFill()
                     {
@@ -104,9 +105,22 @@ namespace ProjektSemestralny
                         db.DefaultColors.Add(defaultColor);
                     }
 
-                    db.SquareFills.Add(newSquare);
                     db.NewProjects.Add(newItem);
+                    db.SquareFills.Add(newSquare);
 
+
+                    for (int i = 1; i <= (sizeBoardNumber / sizeSquareNumber) * (sizeBoardNumber / sizeSquareNumber); i++)
+                    {
+                        BoardColor boardCol = new BoardColor()
+                        {
+                            rgb_blue = blue,
+                            rgb_green = green,
+                            rgb_red = red,
+                            square_number = i
+                        };
+                        db.BoardColors.Add(boardCol);
+                    }
+                    db.SaveChanges();
 
                     // Sprawdzenie czy aktualna tablica z globalnymi wartościami jest pusta
                     var globValue = from l in db.GlobalValues
@@ -147,17 +161,7 @@ namespace ProjektSemestralny
                     var bor = from b in db.BoardColors
                               select b;
 
-                    for (int i = 1; i <= (sizeBoardNumber / sizeSquareNumber) * (sizeBoardNumber / sizeSquareNumber); i++)
-                    {
-                        BoardColor boardCol = new BoardColor()
-                        {
-                            rgb_blue = blue,
-                            rgb_green = green,
-                            rgb_red = red,
-                            square_number = i
-                        };
-                        db.BoardColors.Add(boardCol);
-                    }
+
 
                     db.SaveChanges();
 

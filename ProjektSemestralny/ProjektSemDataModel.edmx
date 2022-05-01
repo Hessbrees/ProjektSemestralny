@@ -62,6 +62,7 @@
           <Property Name="boardSize" Type="int" Nullable="false" />
           <Property Name="squareSize" Type="int" Nullable="false" />
           <Property Name="description" Type="bit" Nullable="false" />
+          <Property Name="descNew" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="SquareFill">
           <Key>
@@ -239,6 +240,7 @@
           <NavigationProperty Name="BoardColors" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="NewProject" ToRole="BoardColor" />
           <NavigationProperty Name="DefaultColors" Relationship="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" FromRole="NewProject" ToRole="DefaultColor" />
           <NavigationProperty Name="SquareFills" Relationship="ProjektSemestralnyDBModel.Key_SquareFill_id_project" FromRole="NewProject" ToRole="SquareFill" />
+          <Property Name="descNew" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SquareFill">
           <Key>
@@ -361,6 +363,7 @@
           <EntitySetMapping Name="NewProjects">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.NewProject">
               <MappingFragment StoreEntitySet="NewProject">
+                <ScalarProperty Name="descNew" ColumnName="descNew" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="squareSize" ColumnName="squareSize" />
                 <ScalarProperty Name="boardSize" ColumnName="boardSize" />

@@ -27,6 +27,7 @@ namespace ProjektSemestralny
         public int boardSize { get; set; }
         public int squareSize { get; set; }
         public bool description { get; set; }
+        public string descNew { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BoardColor> BoardColors { get; set; }
