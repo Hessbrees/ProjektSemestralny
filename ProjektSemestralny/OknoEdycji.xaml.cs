@@ -24,6 +24,26 @@ namespace ProjektSemestralny
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l;
+            foreach(var item in globValue)
+            {
+                var proj = from p in db.NewProjects
+                           where p.id_project == item.actualProject
+                           select p;
+                foreach(var item2 in proj)
+                {
+                    OknoPar.Height = 140 + item2.boardSize;
+                    OknoPar.Width = 160 + item2.boardSize;
+                    MainLayer.Height = item2.boardSize;
+                    MainLayer.Width = item2.boardSize;
+                }
+            }
+
+
+
             DataContext = this;
 
             refreshColor();

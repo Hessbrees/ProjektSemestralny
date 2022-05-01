@@ -21,8 +21,8 @@ namespace ProjektSemestralny
     {
         public NowyProjekt()
         {
-           WindowStartupLocation = WindowStartupLocation.CenterScreen;
-           InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,17 +36,17 @@ namespace ProjektSemestralny
         }
         private void newProject()
         {
-                byte green = 0;byte red = 0;byte blue = 0;
+            byte green = 0; byte red = 0; byte blue = 0;
             try
             {
-                if(greenFill != null) 
+                if (greenFill != null)
                     green = byte.Parse(greenFill.Text);
                 if (redFill != null)
                     red = byte.Parse(redFill.Text);
                 if (blueFill != null)
                     blue = byte.Parse(blueFill.Text);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Wpisano blędne wartości kolorów!");
             }
@@ -65,13 +65,17 @@ namespace ProjektSemestralny
                     int sizeBoardNumber = 0;
                     int sizeSquareNumber = 0;
                     bool desc = false;
-                    if (sizeBoard.SelectedItem == sizeBoard1) sizeBoardNumber = 640;
+                    if (sizeBoard.SelectedItem == sizeBoard640) sizeBoardNumber = 640;
+                    else if (sizeBoard.SelectedItem == sizeBoard800) sizeBoardNumber = 800;
+                    else if (sizeBoard.SelectedItem == sizeBoard400) sizeBoardNumber = 400;
 
-                    if (squareSize.SelectedItem == squareSize128) sizeSquareNumber = sizeBoardNumber/ 128;
-                    else if (squareSize.SelectedItem == squareSize64) sizeSquareNumber = sizeBoardNumber/ 64;
-                    else if (squareSize.SelectedItem == squareSize32) sizeSquareNumber = sizeBoardNumber/ 32;
-                    else if (squareSize.SelectedItem == squareSize20) sizeSquareNumber = sizeBoardNumber/ 20;
-                    else if (squareSize.SelectedItem == squareSize16) sizeSquareNumber = sizeBoardNumber/ 16;
+                    //if (squareSize.SelectedItem == squareSize128) sizeSquareNumber = sizeBoardNumber/ 128;
+                    if (squareSize.SelectedItem == "squareSize64") sizeSquareNumber = sizeBoardNumber / 64;
+                    else if (squareSize.SelectedItem == "squareSize80") sizeSquareNumber = sizeBoardNumber / 80;
+                    else if (squareSize.SelectedItem == "squareSize40") sizeSquareNumber = sizeBoardNumber / 40;
+                    else if (squareSize.SelectedItem == "squareSize32") sizeSquareNumber = sizeBoardNumber / 32;
+                    else if (squareSize.SelectedItem == "squareSize20") sizeSquareNumber = sizeBoardNumber / 20;
+                    else if (squareSize.SelectedItem == "squareSize16") sizeSquareNumber = sizeBoardNumber / 16;
 
                     if (Description.SelectedItem == yesDescription) desc = true;
 
@@ -85,11 +89,11 @@ namespace ProjektSemestralny
                     };
                     SquareFill newSquare = new SquareFill()
                     {
-                        defaultRed = red ,
-                        defaultGreen=green,
-                        defaultBlue =blue
+                        defaultRed = red,
+                        defaultGreen = green,
+                        defaultBlue = blue
                     };
-                    for(int i =1; i <=6;i++)
+                    for (int i = 1; i <= 6; i++)
                     {
                         DefaultColor defaultColor = new DefaultColor()
                         {
@@ -149,5 +153,80 @@ namespace ProjektSemestralny
                 MessageBox.Show("Nie wszystkie pola są wypełnione!");
             }
         }
+
+        private void sizeBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sizeBoard.SelectedItem == sizeBoard640)
+            {
+                squareSize.Items.Clear();
+                ComboBoxItem item = new ComboBoxItem();
+                ComboBoxItem item2 = new ComboBoxItem();
+                ComboBoxItem item3 = new ComboBoxItem();
+                ComboBoxItem item4 = new ComboBoxItem();
+                ComboBoxItem item5 = new ComboBoxItem();
+                item.Name = "squareSize64";
+                item.Content = "1/64 Planszy";
+                squareSize.Items.Add(item) ;
+                item2.Name = "squareSize32";
+                item2.Content = "1/32 Planszy";
+                squareSize.Items.Add(item2 );
+                item3.Name = "squareSize16";
+                item3.Content = "1/16 Planszy";
+                squareSize.Items.Add(item3);
+                item4.Name = "squareSize40";
+                item4.Content = "1/40 Planszy";
+                squareSize.Items.Add(item4);
+                item5.Name = "squareSize20";
+                item5.Content = "1/20 Planszy";
+                squareSize.Items.Add(item5);
+            }
+            else if (sizeBoard.SelectedItem == sizeBoard800)
+            {
+                squareSize.Items.Clear();
+                ComboBoxItem item = new ComboBoxItem();
+                ComboBoxItem item2 = new ComboBoxItem();
+                ComboBoxItem item3 = new ComboBoxItem();
+                ComboBoxItem item4 = new ComboBoxItem();
+                ComboBoxItem item5 = new ComboBoxItem();
+                item.Name = "squareSize80";
+                item.Content = "1/80 Planszy";
+                squareSize.Items.Add(item);
+                item2.Name = "squareSize40";
+                item2.Content = "1/40 Planszy";
+                squareSize.Items.Add(item2);
+                item3.Name = "squareSize20";
+                item3.Content = "1/20 Planszy";
+                squareSize.Items.Add(item3);
+                item4.Name = "squareSize32";
+                item4.Content = "1/32 Planszy";
+                squareSize.Items.Add(item4);
+                item5.Name = "squareSize16";
+                item5.Content = "1/16 Planszy";
+                squareSize.Items.Add(item5);
+            }
+            else if (sizeBoard.SelectedItem == sizeBoard400)
+            {
+                squareSize.Items.Clear();
+                ComboBoxItem item = new ComboBoxItem();
+                ComboBoxItem item2 = new ComboBoxItem();
+                ComboBoxItem item3 = new ComboBoxItem();
+                item.Name = "squareSize40";
+                item.Content = "1/40 Planszy";
+                squareSize.Items.Add(item);
+                item2.Name = "squareSize20";
+                item2.Content = "1/20 Planszy";
+                squareSize.Items.Add(item2);
+                item3.Name = "squareSize16";
+                item3.Content = "1/16 Planszy";
+                squareSize.Items.Add(item3);
+            }
+        }
     }
 }
+
+
+//< ComboBoxItem x: Name = "squareSize128" Content = "1/128 Planszy" HorizontalAlignment = "Left" Width = "118" />
+//< ComboBoxItem x: Name = "squareSize64" Content = "1/64 Planszy" HorizontalAlignment = "Left" Width = "118" />
+//< ComboBoxItem x: Name = "squareSize32" Content = "1/32 Planszy" HorizontalAlignment = "Left" Width = "118" />
+//< ComboBoxItem x: Name = "squareSize20" Content = "1/20 Planszy" HorizontalAlignment = "Left" Width = "118" />
+//< ComboBoxItem x: Name = "squareSize16" Content = "1/16 Planszy" HorizontalAlignment = "Left" Width = "118" />

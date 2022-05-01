@@ -14,17 +14,15 @@
         <TextBox x:Name="projectName" HorizontalAlignment="Left" Margin="130,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" Text="Nazwa Projektu" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-        <ComboBox x:Name="sizeBoard" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem x:Name="sizeBoard1" Content="64x64" HorizontalAlignment="Left" Width="118"/>
+        <ComboBox x:Name="sizeBoard" HorizontalAlignment="Left" Margin="130,80,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="sizeBoard_SelectionChanged">
+            <ComboBoxItem x:Name="sizeBoard640" Content="640x640" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem x:Name="sizeBoard800" Content="800x800" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem x:Name="sizeBoard400" Content="400x400" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" Text="Rozmiar Planszy" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
         <ComboBox x:Name="squareSize" HorizontalAlignment="Left" Margin="130,110,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem x:Name="squareSize128" Content="1/128 Planszy" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem x:Name="squareSize64" Content="1/64 Planszy" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem x:Name="squareSize32" Content="1/32 Planszy" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem x:Name="squareSize20" Content="1/20 Planszy" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem x:Name="squareSize16" Content="1/16 Planszy" HorizontalAlignment="Left" Width="118"/>
+
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,110,0,0" Text="Rozmiar Kafelka" TextWrapping="Wrap" VerticalAlignment="Top"/>
 

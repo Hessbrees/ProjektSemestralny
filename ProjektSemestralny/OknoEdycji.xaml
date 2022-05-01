@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="OknoEdycji" Height="780" Width="800"
+        Title="OknoEdycji" Height="780" Width="800" x:Name="OknoPar"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
     <Grid Background="AntiqueWhite">
 
-        <Button Content="Zapisz i zamknij" HorizontalAlignment="Left" Margin="30,0,0,10" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click"/>
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="30,0,0,40" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_2"/>
+        <Button Content="Zapisz i zamknij" HorizontalAlignment="Left" Margin="150,0,0,60" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="30,0,0,60" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_2"/>
         
         <Button Content="Ustawienia koloru" HorizontalAlignment="Right" Margin="0,0,70,10" VerticalAlignment="Bottom" Width="120" Height="20" Click="Button_Click_1"/>
         <Rectangle x:Name="actualColor" HorizontalAlignment="Right" Fill="{Binding kwadracik, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="0,0,30,10" Stroke="Black" VerticalAlignment="Bottom" Width="20"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,0,120,10" Text="Opis.." TextWrapping="Wrap" VerticalAlignment="Bottom" Height="40" Width="380"/>
+        <TextBox HorizontalAlignment="Left" Margin="30,0,0,10" Text="Opis.." TextWrapping="Wrap" VerticalAlignment="Bottom" Height="40" Width="260"/>
 
         <Grid x:Name="MainLayer" Margin="0,10,0,0" VerticalAlignment="Top" Background="White" Height="640" Width="640" OpacityMask="#FF2032E4"/>
         
