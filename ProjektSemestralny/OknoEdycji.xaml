@@ -10,8 +10,9 @@
     <Grid Background="AntiqueWhite">
 
         <Button Content="Zamknij" HorizontalAlignment="Left" Margin="230,0,0,60" VerticalAlignment="Bottom" Width="60" Height="20" Click="Button_Click"/>
-        <Button Content="Wczytaj" HorizontalAlignment="Left" Margin="150,0,0,60" VerticalAlignment="Bottom" Width="60" Height="20" Click="Button_Click_3"/>
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="30,0,0,60" VerticalAlignment="Bottom" Width="100" Height="20" Click="Button_Click_2"/>
+        <Button Content="Wczytaj" HorizontalAlignment="Left" Margin="160,0,0,60" VerticalAlignment="Bottom" Width="60" Height="20" Click="Button_Click_3"/>
+        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="100,0,0,60" VerticalAlignment="Bottom" Width="50" Height="20" Click="Button_Click_4"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="30,0,0,60" VerticalAlignment="Bottom" Width="60" Height="20" Click="Button_Click_2"/>
         
         <Button Content="Ustawienia koloru" HorizontalAlignment="Right" Margin="0,0,70,10" VerticalAlignment="Bottom" Width="120" Height="20" Click="Button_Click_1"/>
         <Rectangle x:Name="actualColor" HorizontalAlignment="Right" Fill="{Binding kwadracik, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="0,0,30,10" Stroke="Black" VerticalAlignment="Bottom" Width="20"/>
