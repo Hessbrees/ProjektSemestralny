@@ -87,7 +87,10 @@ namespace ProjektSemestralny
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            MessageBoxResult result = MessageBox.Show(
+                "Niezapisane zmiany zostaną utracone. Chcesz zamknąć projekt?"
+                , "Uwaga!", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes) Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
