@@ -89,10 +89,7 @@ namespace ProjektSemestralny
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show(
-                "Niezapisane zmiany zostaną utracone. Chcesz zamknąć projekt?"
-                , "Uwaga!", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes) Close();
+             Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -196,28 +193,21 @@ namespace ProjektSemestralny
             foreach (var gv in globVal)
                 foreach (var item in proj)
                     if (item.id_project == gv.actualProject)
-                        for (int i = 0; i < item.boardSize / item.squareSize; i++)
-                            for (int j = 0; j < item.boardSize / item.squareSize; j++)
+                    {
+                        k = int.Parse(rec.Name.Trim('s'));
+                        var board = from b in db.BoardColors
+                                    where b.id_project == gv.actualProject
+                                    where b.square_number == k
+                                    select b;
+
+                        foreach (var gc in globValue)
+                            foreach (var square in board)
                             {
-                                if (k == int.Parse(rec.Name.Trim('s')))
-                                {
-                                    var board = from b in db.BoardColors
-                                                where b.id_project == gv.actualProject
-                                                where b.square_number == k
-                                                select b;
-
-                                    foreach (var gc in globValue)
-                                        foreach (var square in board)
-                                        {
-                                            square.rgb_blue = gc.choosenColorBlue;
-                                            square.rgb_red = gc.choosenColorRed;
-                                            square.rgb_green = gc.choosenColorGreen;
-                                        }
-                                    break;
-                                }
-                                k++;
+                                square.rgb_blue = gc.choosenColorBlue;
+                                square.rgb_red = gc.choosenColorRed;
+                                square.rgb_green = gc.choosenColorGreen;
                             }
-
+                    }
             db.SaveChanges();
 
 
@@ -291,7 +281,11 @@ namespace ProjektSemestralny
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            //Wczytaj
+            
 
+
+            MessageBox.Show("Wczytano!");
         }
 
     }
