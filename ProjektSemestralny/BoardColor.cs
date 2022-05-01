@@ -15,7 +15,7 @@ namespace ProjektSemestralny
     public partial class BoardColor
     {
         public int id_boardColors { get; set; }
-        public Nullable<int> id_project { get; set; }
+        public int id_project { get; set; }
         public byte rgb_red { get; set; }
         public byte rgb_green { get; set; }
         public byte rgb_blue { get; set; }

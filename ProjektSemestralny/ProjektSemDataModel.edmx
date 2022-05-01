@@ -10,7 +10,7 @@
             <PropertyRef Name="id_boardColors" />
           </Key>
           <Property Name="id_boardColors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="id_project" Type="int" />
+          <Property Name="id_project" Type="int" Nullable="false" />
           <Property Name="rgb_red" Type="tinyint" Nullable="false" />
           <Property Name="rgb_green" Type="tinyint" Nullable="false" />
           <Property Name="rgb_blue" Type="tinyint" Nullable="false" />
@@ -73,7 +73,7 @@
           <Property Name="defaultBlue" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="Key_BoardColors_id_project">
-          <End Role="NewProject" Type="Self.NewProject" Multiplicity="0..1" />
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
           <End Role="BoardColors" Type="Self.BoardColors" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NewProject">
@@ -179,7 +179,7 @@
             <PropertyRef Name="id_boardColors" />
           </Key>
           <Property Name="id_boardColors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_project" Type="Int32" />
+          <Property Name="id_project" Type="Int32" Nullable="false" />
           <Property Name="rgb_red" Type="Byte" Nullable="false" />
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
           <Property Name="rgb_blue" Type="Byte" Nullable="false" />
@@ -250,7 +250,7 @@
           <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_SquareFill_id_project" FromRole="SquareFill" ToRole="NewProject" />
         </EntityType>
         <Association Name="Key_BoardColors_id_project">
-          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="0..1" />
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="1" />
           <End Type="ProjektSemestralnyDBModel.BoardColor" Role="BoardColor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NewProject">

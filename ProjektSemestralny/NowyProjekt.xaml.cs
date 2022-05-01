@@ -71,7 +71,7 @@ namespace ProjektSemestralny
 
                     //if (squareSize.SelectedItem == squareSize128) sizeSquareNumber = sizeBoardNumber/ 128;
                     if (squareSize.Text == "1/64 Planszy") sizeSquareNumber = sizeBoardNumber / 64;
-                    else if (squareSize.Text== "1/80 Planszy") sizeSquareNumber = sizeBoardNumber / 80;
+                    else if (squareSize.Text == "1/80 Planszy") sizeSquareNumber = sizeBoardNumber / 80;
                     else if (squareSize.Text == "1/40 Planszy") sizeSquareNumber = sizeBoardNumber / 40;
                     else if (squareSize.Text == "1/32 Planszy") sizeSquareNumber = sizeBoardNumber / 32;
                     else if (squareSize.Text == "1/20 Planszy") sizeSquareNumber = sizeBoardNumber / 20;
@@ -143,6 +143,23 @@ namespace ProjektSemestralny
                         item.choosenColorBlue = 255;
                         item.choosenColorGreen = 255;
                     }
+
+                    //Zapisanie elementów nowej planszy
+                    var bor = from b in db.BoardColors
+                              select b;
+                    if (bor.Any() == false)
+                    {
+                        for (int i = 1; i <= (sizeBoardNumber/sizeSquareNumber)* (sizeBoardNumber / sizeSquareNumber); i++)
+                        {
+                            BoardColor boardCol = new BoardColor()
+                            {
+                                rgb_blue = blue,
+                                rgb_green = green,
+                                rgb_red = red
+                            };
+                            db.BoardColors.Add(boardCol);
+                        }
+                    }
                     db.SaveChanges();
 
                     Close();
@@ -166,10 +183,10 @@ namespace ProjektSemestralny
                 ComboBoxItem item5 = new ComboBoxItem();
                 item.Name = "squareSize64";
                 item.Content = "1/64 Planszy";
-                squareSize.Items.Add(item) ;
+                squareSize.Items.Add(item);
                 item2.Name = "squareSize32";
                 item2.Content = "1/32 Planszy";
-                squareSize.Items.Add(item2 );
+                squareSize.Items.Add(item2);
                 item3.Name = "squareSize16";
                 item3.Content = "1/16 Planszy";
                 squareSize.Items.Add(item3);
