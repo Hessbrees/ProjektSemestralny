@@ -117,6 +117,8 @@ namespace ProjektSemestralny
 
         private void AddSquare()
         {
+            // reset
+            MainLayer.Children.Clear();
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             var globValue = from l in db.GlobalValues
                             select l;
@@ -179,6 +181,7 @@ namespace ProjektSemestralny
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            // reset
             AddSquare();
         }
 
@@ -242,7 +245,19 @@ namespace ProjektSemestralny
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             //zapisz
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+            var globValue = from l in db.GlobalValues
+                            select l.actualProject;
 
+            var board = from b in db.BoardColors
+                        where b.id_project == globValue.First()
+                        select b;
+            foreach(var item in board)
+            {
+                item.rgb_blue = 255;
+                item.rgb_red = 255;
+                item.rgb_green = 255;
+            }
 
         }
     }

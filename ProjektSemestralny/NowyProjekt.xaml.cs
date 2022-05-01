@@ -71,7 +71,6 @@ namespace ProjektSemestralny
 
                     //if (squareSize.SelectedItem == squareSize128) sizeSquareNumber = sizeBoardNumber/ 128;
                     if (squareSize.Text == "1/64 Planszy") sizeSquareNumber = sizeBoardNumber / 64;
-                    else if (squareSize.Text == "1/80 Planszy") sizeSquareNumber = sizeBoardNumber / 80;
                     else if (squareSize.Text == "1/40 Planszy") sizeSquareNumber = sizeBoardNumber / 40;
                     else if (squareSize.Text == "1/32 Planszy") sizeSquareNumber = sizeBoardNumber / 32;
                     else if (squareSize.Text == "1/20 Planszy") sizeSquareNumber = sizeBoardNumber / 20;
@@ -200,14 +199,11 @@ namespace ProjektSemestralny
             else if (sizeBoard.SelectedItem == sizeBoard800)
             {
                 squareSize.Items.Clear();
-                ComboBoxItem item = new ComboBoxItem();
                 ComboBoxItem item2 = new ComboBoxItem();
                 ComboBoxItem item3 = new ComboBoxItem();
                 ComboBoxItem item4 = new ComboBoxItem();
                 ComboBoxItem item5 = new ComboBoxItem();
-                item.Name = "squareSize80";
-                item.Content = "1/80 Planszy";
-                squareSize.Items.Add(item);
+
                 item2.Name = "squareSize40";
                 item2.Content = "1/40 Planszy";
                 squareSize.Items.Add(item2);
