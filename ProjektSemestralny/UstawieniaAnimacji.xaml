@@ -14,7 +14,7 @@
         
         <TextBox MaxLength="2" x:Name="interval" HorizontalAlignment="Right" Margin="0,0,280,60" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50"/>
        
-        <ComboBox x:Name="sizeBoard" HorizontalAlignment="Right" Margin="0,0,340,10" VerticalAlignment="Bottom" Width="80">
+        <ComboBox x:Name="sizeBoard" HorizontalAlignment="Right" Margin="0,0,340,10" VerticalAlignment="Bottom" Width="80" SelectionChanged="sizeBoard_SelectionChanged">
             <ComboBoxItem x:Name="sizeBoard640" Content="640x640" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem x:Name="sizeBoard800" Content="800x800" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem x:Name="sizeBoard400" Content="400x400" HorizontalAlignment="Left" Width="118"/>
@@ -24,7 +24,7 @@
         <Button Content="Zamknij" HorizontalAlignment="Left" Margin="20,0,0,10" VerticalAlignment="Bottom" Width="80" Height="30" Click="Button_Click_1"/>
         
         <Grid x:Name="MainAnimLayer" Margin="0,10,0,0" VerticalAlignment="Top" Background="White" Height="400" Width="400" OpacityMask="#FF2032E4"/>
-        <ListBox Margin="0,0,50,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="70" Height="70"/>
+        <ListBox x:Name="DostepneProj" Margin="0,0,50,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="70" Height="70"/>
         <Button Content="Dodaj" HorizontalAlignment="Right" Margin="0,0,130,50" VerticalAlignment="Bottom" Width="40" Height="20" FontFamily="Arial" FontSize="10"/>
         <Button Content="Usuń" HorizontalAlignment="Right" Margin="0,0,130,20" VerticalAlignment="Bottom" Width="40" Height="20" FontFamily="Arial" FontSize="10"/>
         <ListBox Margin="0,0,180,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="70" Height="70"/>

@@ -49,7 +49,6 @@ namespace ProjektSemestralny
                 var proj = from p in db.NewProjects
                            select p;
 
-
                 int idNumer = 0;
                 foreach (var item in proj)
                 {
