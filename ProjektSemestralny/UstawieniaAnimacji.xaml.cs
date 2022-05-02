@@ -22,6 +22,7 @@ namespace ProjektSemestralny
         private int _boardSize;
         public UstawieniaAnimacji()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
