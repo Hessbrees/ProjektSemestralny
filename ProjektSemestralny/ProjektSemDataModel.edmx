@@ -12,7 +12,6 @@
           <Property Name="id_animation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_project" Type="int" Nullable="false" />
           <Property Name="boardSize" Type="int" Nullable="false" />
-          <Property Name="animIndex" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AnimationBoard640">
           <Key>
@@ -21,7 +20,6 @@
           <Property Name="id_animation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_project" Type="int" Nullable="false" />
           <Property Name="boardSize" Type="int" Nullable="false" />
-          <Property Name="animIndex" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AnimationBoard800">
           <Key>
@@ -30,7 +28,6 @@
           <Property Name="id_animation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_project" Type="int" Nullable="false" />
           <Property Name="boardSize" Type="int" Nullable="false" />
-          <Property Name="animIndex" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="BoardColors">
           <Key>
@@ -404,7 +401,6 @@
           <Property Name="id_animation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_project" Type="Int32" Nullable="false" />
           <Property Name="boardSize" Type="Int32" Nullable="false" />
-          <Property Name="animIndex" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard400_id_project" FromRole="AnimationBoard400" ToRole="NewProject" />
         </EntityType>
         <EntityType Name="AnimationBoard640">
@@ -414,7 +410,6 @@
           <Property Name="id_animation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_project" Type="Int32" Nullable="false" />
           <Property Name="boardSize" Type="Int32" Nullable="false" />
-          <Property Name="animIndex" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard640_id_project" FromRole="AnimationBoard640" ToRole="NewProject" />
         </EntityType>
         <EntityType Name="AnimationBoard800">
@@ -424,7 +419,6 @@
           <Property Name="id_animation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_project" Type="Int32" Nullable="false" />
           <Property Name="boardSize" Type="Int32" Nullable="false" />
-          <Property Name="animIndex" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard800_id_project" FromRole="AnimationBoard800" ToRole="NewProject" />
         </EntityType>
         <Association Name="Key_AnimationBoard400_id_project">
@@ -548,7 +542,6 @@
           <EntitySetMapping Name="AnimationBoard400">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.AnimationBoard400">
               <MappingFragment StoreEntitySet="AnimationBoard400">
-                <ScalarProperty Name="animIndex" ColumnName="animIndex" />
                 <ScalarProperty Name="boardSize" ColumnName="boardSize" />
                 <ScalarProperty Name="id_project" ColumnName="id_project" />
                 <ScalarProperty Name="id_animation" ColumnName="id_animation" />
@@ -558,7 +551,6 @@
           <EntitySetMapping Name="AnimationBoard640">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.AnimationBoard640">
               <MappingFragment StoreEntitySet="AnimationBoard640">
-                <ScalarProperty Name="animIndex" ColumnName="animIndex" />
                 <ScalarProperty Name="boardSize" ColumnName="boardSize" />
                 <ScalarProperty Name="id_project" ColumnName="id_project" />
                 <ScalarProperty Name="id_animation" ColumnName="id_animation" />
@@ -568,7 +560,6 @@
           <EntitySetMapping Name="AnimationBoard800">
             <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.AnimationBoard800">
               <MappingFragment StoreEntitySet="AnimationBoard800">
-                <ScalarProperty Name="animIndex" ColumnName="animIndex" />
                 <ScalarProperty Name="boardSize" ColumnName="boardSize" />
                 <ScalarProperty Name="id_project" ColumnName="id_project" />
                 <ScalarProperty Name="id_animation" ColumnName="id_animation" />

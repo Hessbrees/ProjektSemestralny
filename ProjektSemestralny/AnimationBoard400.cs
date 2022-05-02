@@ -17,7 +17,6 @@ namespace ProjektSemestralny
         public int id_animation { get; set; }
         public int id_project { get; set; }
         public int boardSize { get; set; }
-        public int animIndex { get; set; }
     
         public virtual NewProject NewProject { get; set; }
     }

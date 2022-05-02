@@ -20,9 +20,6 @@ namespace ProjektSemestralny
     public partial class UstawieniaAnimacji : Window
     {
         private int _boardSize;
-        private int _board400;
-        private int _board640;
-        private int _board800;
         public UstawieniaAnimacji()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -33,10 +30,7 @@ namespace ProjektSemestralny
             var Bor2 = from p in db.AnimationBoard640 select p;
             var Bor3 = from p in db.AnimationBoard800 select p;
 
-            foreach (var item in Bor1) _board400 = item.animIndex;
-            foreach (var item in Bor2) _board640 = item.animIndex;
-            foreach (var item in Bor3) _board800 = item.animIndex;
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -75,10 +69,10 @@ namespace ProjektSemestralny
         {
             AnimationList.Items.Clear();
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-            if(_boardSize == 400)
+            if (_boardSize == 400)
             {
                 var anim = from a in db.AnimationBoard400 select a;
-                foreach(var a_item in anim)
+                foreach (var a_item in anim)
                 {
                     var proj = from p in db.NewProjects
                                where p.id_project == a_item.id_project
@@ -89,7 +83,7 @@ namespace ProjektSemestralny
                     }
                 }
             }
-            else if(_boardSize == 640)
+            else if (_boardSize == 640)
             {
                 var anim = from a in db.AnimationBoard640 select a;
                 foreach (var a_item in anim)
@@ -163,7 +157,7 @@ namespace ProjektSemestralny
                        select p;
             int idNumer = 0;
 
-            foreach(var item in proj)
+            foreach (var item in proj)
             {
                 if (idNumer == DostepneProj.SelectedIndex)
                 {
@@ -173,10 +167,8 @@ namespace ProjektSemestralny
                         {
                             id_project = item.id_project,
                             boardSize = _boardSize,
-                            animIndex = _board400
                         };
                         db.AnimationBoard400.Add(newItem1);
-                        _board400++;
                     }
                     else if (_boardSize == 640)
                     {
@@ -184,10 +176,8 @@ namespace ProjektSemestralny
                         {
                             id_project = item.id_project,
                             boardSize = _boardSize,
-                            animIndex = _board640
                         };
                         db.AnimationBoard640.Add(newItem2);
-                        _board640++;
                     }
                     else if (_boardSize == 800)
                     {
@@ -195,16 +185,14 @@ namespace ProjektSemestralny
                         {
                             id_project = item.id_project,
                             boardSize = _boardSize,
-                            animIndex = _board800
                         };
                         db.AnimationBoard800.Add(newItem3);
-                        _board800++;
                     }
                     break;
                 }
                 idNumer++;
             }
-         
+
 
             db.SaveChanges();
             AnimationList.Items.Add(DostepneProj.SelectedItem);
@@ -213,21 +201,61 @@ namespace ProjektSemestralny
         private void RemoveProject()
         {
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-
-            var anim = from p in db.AnimationBoard400
-                       where p.boardSize == _boardSize
-                       select p;
             var proj = from p in db.NewProjects
                        where p.boardSize == _boardSize
                        select p;
-
-
-            //AnimationList.Items.Remove(DostepneProj.SelectedItem);
+            if (_boardSize == 400)
+            {
+                var anim = from p in db.AnimationBoard400
+                           select p;
+                int i = 0;
+                foreach (var item in anim)
+                {
+                    if (AnimationList.SelectedIndex == i)
+                    {
+                        AnimationList.Items.Remove(item);
+                        db.AnimationBoard400.Remove(item);
+                    }
+                    i++;
+                }
+            }
+            else if (_boardSize == 640)
+            {
+                var anim = from p in db.AnimationBoard640
+                           select p;
+                int i = 0;
+                foreach (var item in anim)
+                {
+                    if (AnimationList.SelectedIndex == i)
+                    {
+                        AnimationList.Items.Remove(item);
+                        db.AnimationBoard640.Remove(item);
+                    }
+                    i++;
+                }
+            }
+            else if (_boardSize == 800)
+            {
+                var anim = from p in db.AnimationBoard800
+                           select p;
+                int i = 0;
+                foreach (var item in anim)
+                {
+                    if (AnimationList.SelectedIndex == i)
+                    {
+                        AnimationList.Items.Remove(item);
+                        db.AnimationBoard800.Remove(item);
+                    }
+                    i++;
+                }
+            }
+            db.SaveChanges();
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             //usun
             RemoveProject();
+            LoadAnimList();
         }
     }
 }
