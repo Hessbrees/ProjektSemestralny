@@ -28,15 +28,20 @@ namespace ProjektSemestralny
         private List<int> _actualID400 = new List<int>();
         private List<int> _actualID640 = new List<int>();
         private List<int> _actualID800 = new List<int>();
-        private int count;
 
         private int count_400;
         private int count_640;
         private int count_800;
+
+        DispatcherTimer Timer = new DispatcherTimer();
+
+
         public UstawieniaAnimacji()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            Timer.Tick += new EventHandler(TimeClick);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,7 +75,6 @@ namespace ProjektSemestralny
             count_400 = 0;
             count_640 = 0;
             count_800 = 0;
-
             //wczytywanie listy
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             if (_boardSize == 400)
@@ -127,6 +131,7 @@ namespace ProjektSemestralny
 
         private void sizeBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            MainAnimLayer.Children.Clear();
             if (sizeBoard.SelectedItem == sizeBoard400)
             {
                 _boardSize = 400;
@@ -278,6 +283,9 @@ namespace ProjektSemestralny
                 MessageBox.Show("Czas przejścia musi być liczbą całkowitą z przedziału 1-10s");
             }
 
+            count_400 = 0;
+            count_640 = 0;
+            count_800 = 0;
             //Tutaj zapis danych
 
             if (_boardSize == 400)
@@ -307,69 +315,42 @@ namespace ProjektSemestralny
                 }
                 count_800 = 0;
             }
-            FirstLoad();
-            DispatcherTimer Timer = new DispatcherTimer();
-            Timer.Tick += new EventHandler(TimeClick);
             Timer.Interval = new TimeSpan(0, 0, _interval);
             Timer.Start();
 
-
+            
         }
         private void TimeClick(object sender, EventArgs e)
         {
-            if (count < _actualID400.Count)
+            if(_boardSize ==400)
             {
-                Load(_actualID400[count]);
-                count++;
+                if (count_400 < _actualID400.Count)
+                {
+                    Load(_actualID400[count_400], count_400);
+                    count_400++;
+                }
+                else Timer.Stop();
+            }
+            else if (_boardSize == 640)
+            {
+                if (count_640 < _actualID640.Count)
+                {
+                    Load(_actualID640[count_640], count_640);
+                    count_640++;
+                }
+                else Timer.Stop();
+            }
+            else if (_boardSize == 800)
+            {
+                if (count_800 < _actualID800.Count)
+                {
+                    Load(_actualID800[count_800], count_800);
+                    count_800++;
+                }
+                else Timer.Stop();
             }
         }
-        private void FirstLoad()
-        {
-            MainAnimLayer.Children.Clear();
-            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
 
-            var proj = from p in db.NewProjects
-                       select p;
-            byte red = 0; byte green = 0; byte blue = 0;
-            int k = 0;
-            int i = 0;
-            int j = 0;
-            foreach (var item in proj)
-                if (item.id_project == ID)
-                {
-                    var fl = from f in db.BoardColors
-                             where f.id_project == item.id_project
-                             select f;
-
-                    foreach (var color in fl)
-                    {
-                        red = color.rgb_red;
-                        green = color.rgb_green;
-                        blue = color.rgb_blue;
-
-                        Rectangle r = new Rectangle
-                        {
-                            Height = item.squareSize,
-                            Width = item.squareSize,
-                            Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
-                            Name = "s" + k.ToString()
-                        };
-
-                        r.VerticalAlignment = VerticalAlignment.Top;
-                        r.HorizontalAlignment = HorizontalAlignment.Left;
-                        r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
-                        MainAnimLayer.Children.Add(r);
-
-                        k++;
-                        if (j % ((item.boardSize / item.squareSize) - 1) == 0 & j != 0)
-                        {
-                            i++;
-                            j = 0;
-                        }
-                        else j++;
-                    }
-                }
-        }
         private void SaveColors(int ID, int count_x)
         {
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
@@ -394,7 +375,7 @@ namespace ProjektSemestralny
                     }
                 }
         }
-        private void Load(int ID)
+        private void Load(int ID, int index)
         {
             MainAnimLayer.Children.Clear();
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
@@ -414,16 +395,15 @@ namespace ProjektSemestralny
 
                     foreach (var color in fl)
                     {
-                        red = color.rgb_red;
-                        green = color.rgb_green;
-                        blue = color.rgb_blue;
+                        red = red_color[index, k];
+                        green = green_color[index,k];
+                        blue = blue_color[index,k];
 
                         Rectangle r = new Rectangle
                         {
                             Height = item.squareSize,
                             Width = item.squareSize,
                             Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
-                            Name = "s" + k.ToString()
                         };
 
                         r.VerticalAlignment = VerticalAlignment.Top;
