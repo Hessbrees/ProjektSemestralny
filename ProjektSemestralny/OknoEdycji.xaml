@@ -16,7 +16,7 @@
         
         <Button Content="Ustawienia koloru" HorizontalAlignment="Right" Margin="0,0,70,10" VerticalAlignment="Bottom" Width="120" Height="20" Click="Button_Click_1"/>
         <Rectangle x:Name="actualColor" HorizontalAlignment="Right" Fill="{Binding kwadracik, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="0,0,30,10" Stroke="Black" VerticalAlignment="Bottom" Width="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="30,0,0,10" Text="Opis.." TextWrapping="Wrap" VerticalAlignment="Bottom" Height="40" Width="260"/>
+        <TextBox x:Name="Main_desc" MaxLength="200" HorizontalAlignment="Left" Margin="30,0,0,10" Text="Opis.." TextWrapping="Wrap" VerticalAlignment="Bottom" Height="40" Width="260"/>
 
         <Grid x:Name="MainLayer" Margin="0,10,0,0" VerticalAlignment="Top" Background="White" Height="400" Width="400" OpacityMask="#FF2032E4"/>
         

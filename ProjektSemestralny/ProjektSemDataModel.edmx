@@ -62,7 +62,7 @@
           <Property Name="boardSize" Type="int" Nullable="false" />
           <Property Name="squareSize" Type="int" Nullable="false" />
           <Property Name="description" Type="bit" Nullable="false" />
-          <Property Name="descNew" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="descNew" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="SquareFill">
           <Key>
@@ -185,8 +185,8 @@
           <Property Name="rgb_red" Type="Byte" Nullable="false" />
           <Property Name="rgb_green" Type="Byte" Nullable="false" />
           <Property Name="rgb_blue" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="BoardColor" ToRole="NewProject" />
           <Property Name="square_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="BoardColor" ToRole="NewProject" />
         </EntityType>
         <EntityType Name="DefaultColor">
           <Key>
@@ -237,10 +237,10 @@
           <Property Name="boardSize" Type="Int32" Nullable="false" />
           <Property Name="squareSize" Type="Int32" Nullable="false" />
           <Property Name="description" Type="Boolean" Nullable="false" />
+          <Property Name="descNew" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BoardColors" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="NewProject" ToRole="BoardColor" />
           <NavigationProperty Name="DefaultColors" Relationship="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" FromRole="NewProject" ToRole="DefaultColor" />
           <NavigationProperty Name="SquareFills" Relationship="ProjektSemestralnyDBModel.Key_SquareFill_id_project" FromRole="NewProject" ToRole="SquareFill" />
-          <Property Name="descNew" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SquareFill">
           <Key>
