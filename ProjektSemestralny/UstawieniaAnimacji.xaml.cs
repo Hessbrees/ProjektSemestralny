@@ -23,5 +23,26 @@ namespace ProjektSemestralny
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //Start
+            int _interval = 1;
+            try
+            {
+                _interval = int.Parse(interval.Text);
+                if (_interval < 0 | _interval > 10) throw new Exception();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Czas przejścia musi być liczbą całkowitą z przedziału 1-10s");
+            }
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

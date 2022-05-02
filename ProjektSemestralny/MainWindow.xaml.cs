@@ -47,7 +47,8 @@ namespace ProjektSemestralny
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             // przycisk animacji
-
+            UstawieniaAnimacji win = new UstawieniaAnimacji();
+            win.ShowDialog();
         }
     }
 }
