@@ -24,6 +24,7 @@ namespace ProjektSemestralny
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -77,6 +78,12 @@ namespace ProjektSemestralny
             {
                     _boardSize = 800;
             }
+
+            UstAnim.Height = 140 + _boardSize;
+            UstAnim.Width = 160 + _boardSize;
+            MainAnimLayer.Height = _boardSize;
+            MainAnimLayer.Width = _boardSize;
+
             LoadProjects();
         }
     }
