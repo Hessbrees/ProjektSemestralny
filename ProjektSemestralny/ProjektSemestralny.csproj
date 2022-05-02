@@ -123,6 +123,9 @@
     <Compile Include="SquareFill.cs">
       <DependentUpon>ProjektSemDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UstawieniaAnimacji.xaml.cs">
+      <DependentUpon>UstawieniaAnimacji.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UstawieniaKoloru.xaml.cs">
       <DependentUpon>UstawieniaKoloru.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,10 @@
     <Page Include="OknoEdycji.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UstawieniaAnimacji.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UstawieniaKoloru.xaml">
       <Generator>MSBuild:Compile</Generator>

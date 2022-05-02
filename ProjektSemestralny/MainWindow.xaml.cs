@@ -43,5 +43,11 @@ namespace ProjektSemestralny
             WybierzProjekt win = new WybierzProjekt();
             win.ShowDialog();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            // przycisk animacji
+
+        }
     }
 }
