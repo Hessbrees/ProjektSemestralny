@@ -20,26 +20,23 @@ namespace ProjektSemestralny
     /// </summary>
     public partial class UstawieniaAnimacji : Window
     {
-        private byte[] red_color = new byte[10000];
-        private byte[] green_color = new byte[10000];
-        private byte[] blue_color = new byte[10000];
+        private byte[,] red_color = new byte[50, 10000];
+        private byte[,] green_color = new byte[50, 10000];
+        private byte[,] blue_color = new byte[50, 10000];
 
         private int _boardSize;
         private List<int> _actualID400 = new List<int>();
         private List<int> _actualID640 = new List<int>();
         private List<int> _actualID800 = new List<int>();
         private int count;
+
+        private int count_400;
+        private int count_640;
+        private int count_800;
         public UstawieniaAnimacji()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
-
-            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
-            var Bor1 = from p in db.AnimationBoard400 select p;
-            var Bor2 = from p in db.AnimationBoard640 select p;
-            var Bor3 = from p in db.AnimationBoard800 select p;
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,6 +46,7 @@ namespace ProjektSemestralny
         }
         private void LoadProjects()
         {
+            //pierwsza lista
             DostepneProj.Items.Clear();
 
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
@@ -62,11 +60,18 @@ namespace ProjektSemestralny
         }
         private void LoadAnimList()
         {
+            //druga lista
+
+            //czyszczenie danych po zmianie wymiaru planszy
             AnimationList.Items.Clear();
             _actualID400.Clear();
             _actualID640.Clear();
             _actualID800.Clear();
+            count_400 = 0;
+            count_640 = 0;
+            count_800 = 0;
 
+            //wczytywanie listy
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             if (_boardSize == 400)
             {
@@ -148,6 +153,7 @@ namespace ProjektSemestralny
         {
             //dodaj
             AddProject();
+
         }
 
         private void AddProject()
@@ -194,8 +200,6 @@ namespace ProjektSemestralny
                 }
                 idNumer++;
             }
-
-
             db.SaveChanges();
             AnimationList.Items.Add(DostepneProj.SelectedItem);
         }
@@ -274,9 +278,39 @@ namespace ProjektSemestralny
                 MessageBox.Show("Czas przejścia musi być liczbą całkowitą z przedziału 1-10s");
             }
 
+            //Tutaj zapis danych
+
+            if (_boardSize == 400)
+            {
+                for (int i = 0; i < _actualID400.Count; i++)
+                {
+                    SaveColors(_actualID400[count_400], count_400);
+                    count_400++;
+                }
+                count_400 = 0;
+            }
+            else if (_boardSize == 640)
+            {
+                for (int i = 0; i < _actualID640.Count; i++)
+                {
+                    SaveColors(_actualID640[count_640], count_640);
+                    count_640++;
+                }
+                count_640 = 0;
+            }
+            else if (_boardSize == 800)
+            {
+                for (int i = 0; i < _actualID800.Count; i++)
+                {
+                    SaveColors(_actualID800[count_800], count_800);
+                    count_800++;
+                }
+                count_800 = 0;
+            }
+            FirstLoad();
             DispatcherTimer Timer = new DispatcherTimer();
             Timer.Tick += new EventHandler(TimeClick);
-            Timer.Interval = new TimeSpan(0,0,_interval);
+            Timer.Interval = new TimeSpan(0, 0, _interval);
             Timer.Start();
 
 
@@ -289,7 +323,77 @@ namespace ProjektSemestralny
                 count++;
             }
         }
+        private void FirstLoad()
+        {
+            MainAnimLayer.Children.Clear();
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
 
+            var proj = from p in db.NewProjects
+                       select p;
+            byte red = 0; byte green = 0; byte blue = 0;
+            int k = 0;
+            int i = 0;
+            int j = 0;
+            foreach (var item in proj)
+                if (item.id_project == ID)
+                {
+                    var fl = from f in db.BoardColors
+                             where f.id_project == item.id_project
+                             select f;
+
+                    foreach (var color in fl)
+                    {
+                        red = color.rgb_red;
+                        green = color.rgb_green;
+                        blue = color.rgb_blue;
+
+                        Rectangle r = new Rectangle
+                        {
+                            Height = item.squareSize,
+                            Width = item.squareSize,
+                            Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
+                            Name = "s" + k.ToString()
+                        };
+
+                        r.VerticalAlignment = VerticalAlignment.Top;
+                        r.HorizontalAlignment = HorizontalAlignment.Left;
+                        r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
+                        MainAnimLayer.Children.Add(r);
+
+                        k++;
+                        if (j % ((item.boardSize / item.squareSize) - 1) == 0 & j != 0)
+                        {
+                            i++;
+                            j = 0;
+                        }
+                        else j++;
+                    }
+                }
+        }
+        private void SaveColors(int ID, int count_x)
+        {
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+
+            int k = 0;
+            var proj = from p in db.NewProjects
+                       select p;
+
+            foreach (var item in proj)
+                if (item.id_project == ID)
+                {
+                    var board = from b in db.BoardColors
+                                where b.id_project == ID
+                                select b;
+
+                    foreach (var square in board)
+                    {
+                        blue_color[count_x, k] = square.rgb_blue;
+                        red_color[count_x, k] = square.rgb_red;
+                        green_color[count_x, k] = square.rgb_green;
+                        k++;
+                    }
+                }
+        }
         private void Load(int ID)
         {
             MainAnimLayer.Children.Clear();
@@ -301,40 +405,41 @@ namespace ProjektSemestralny
             int k = 0;
             int i = 0;
             int j = 0;
-                foreach (var item in proj)
-                    if (item.id_project == ID)
+            foreach (var item in proj)
+                if (item.id_project == ID)
+                {
+                    var fl = from f in db.BoardColors
+                             where f.id_project == item.id_project
+                             select f;
+
+                    foreach (var color in fl)
                     {
-                        var fl = from f in db.BoardColors
-                                 where f.id_project == item.id_project
-                                 select f;
+                        red = color.rgb_red;
+                        green = color.rgb_green;
+                        blue = color.rgb_blue;
 
-                        foreach (var color in fl)
+                        Rectangle r = new Rectangle
                         {
-                            red = color.rgb_red;
-                            green = color.rgb_green;
-                            blue = color.rgb_blue;
+                            Height = item.squareSize,
+                            Width = item.squareSize,
+                            Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
+                            Name = "s" + k.ToString()
+                        };
 
-                            Rectangle r = new Rectangle
-                            {
-                                Height = item.squareSize,
-                                Width = item.squareSize,
-                                Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
-                            };
+                        r.VerticalAlignment = VerticalAlignment.Top;
+                        r.HorizontalAlignment = HorizontalAlignment.Left;
+                        r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
+                        MainAnimLayer.Children.Add(r);
 
-                            r.VerticalAlignment = VerticalAlignment.Top;
-                            r.HorizontalAlignment = HorizontalAlignment.Left;
-                            r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
-                            MainAnimLayer.Children.Add(r);
-
-                            k++;
-                            if (j % ((item.boardSize / item.squareSize) - 1) == 0 & j != 0)
-                            {
-                                i++;
-                                j = 0;
-                            }
-                            else j++;
+                        k++;
+                        if (j % ((item.boardSize / item.squareSize) - 1) == 0 & j != 0)
+                        {
+                            i++;
+                            j = 0;
                         }
+                        else j++;
                     }
+                }
         }
     }
 }
