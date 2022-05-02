@@ -20,6 +20,9 @@ namespace ProjektSemestralny
             this.BoardColors = new HashSet<BoardColor>();
             this.DefaultColors = new HashSet<DefaultColor>();
             this.SquareFills = new HashSet<SquareFill>();
+            this.AnimationBoard400 = new HashSet<AnimationBoard400>();
+            this.AnimationBoard640 = new HashSet<AnimationBoard640>();
+            this.AnimationBoard800 = new HashSet<AnimationBoard800>();
         }
     
         public int id_project { get; set; }
@@ -35,5 +38,11 @@ namespace ProjektSemestralny
         public virtual ICollection<DefaultColor> DefaultColors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SquareFill> SquareFills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnimationBoard400> AnimationBoard400 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnimationBoard640> AnimationBoard640 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnimationBoard800> AnimationBoard800 { get; set; }
     }
 }

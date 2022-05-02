@@ -5,6 +5,33 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProjektSemestralnyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnimationBoard400">
+          <Key>
+            <PropertyRef Name="id_animation" />
+          </Key>
+          <Property Name="id_animation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_project" Type="int" Nullable="false" />
+          <Property Name="boardSize" Type="int" Nullable="false" />
+          <Property Name="animIndex" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnimationBoard640">
+          <Key>
+            <PropertyRef Name="id_animation" />
+          </Key>
+          <Property Name="id_animation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_project" Type="int" Nullable="false" />
+          <Property Name="boardSize" Type="int" Nullable="false" />
+          <Property Name="animIndex" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnimationBoard800">
+          <Key>
+            <PropertyRef Name="id_animation" />
+          </Key>
+          <Property Name="id_animation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_project" Type="int" Nullable="false" />
+          <Property Name="boardSize" Type="int" Nullable="false" />
+          <Property Name="animIndex" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="BoardColors">
           <Key>
             <PropertyRef Name="id_boardColors" />
@@ -74,6 +101,42 @@
           <Property Name="defaultGreen" Type="tinyint" Nullable="false" />
           <Property Name="defaultBlue" Type="tinyint" Nullable="false" />
         </EntityType>
+        <Association Name="Key_AnimationBoard400_id_project">
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
+          <End Role="AnimationBoard400" Type="Self.AnimationBoard400" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="AnimationBoard400">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_AnimationBoard640_id_project">
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
+          <End Role="AnimationBoard640" Type="Self.AnimationBoard640" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="AnimationBoard640">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_AnimationBoard800_id_project">
+          <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
+          <End Role="AnimationBoard800" Type="Self.AnimationBoard800" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="AnimationBoard800">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Key_BoardColors_id_project">
           <End Role="NewProject" Type="Self.NewProject" Multiplicity="1" />
           <End Role="BoardColors" Type="Self.BoardColors" Multiplicity="*" />
@@ -123,6 +186,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ProjektSemestralnyDBModelStoreContainer">
+          <EntitySet Name="AnimationBoard400" EntityType="Self.AnimationBoard400" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimationBoard640" EntityType="Self.AnimationBoard640" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnimationBoard800" EntityType="Self.AnimationBoard800" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BoardColors" EntityType="Self.BoardColors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DefaultColors" EntityType="Self.DefaultColors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GlobalColors" EntityType="Self.GlobalColors" Schema="dbo" store:Type="Tables" />
@@ -130,6 +196,18 @@
           <EntitySet Name="NewColor" EntityType="Self.NewColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewProject" EntityType="Self.NewProject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SquareFill" EntityType="Self.SquareFill" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Key_AnimationBoard400_id_project" Association="Self.Key_AnimationBoard400_id_project">
+            <End Role="NewProject" EntitySet="NewProject" />
+            <End Role="AnimationBoard400" EntitySet="AnimationBoard400" />
+          </AssociationSet>
+          <AssociationSet Name="Key_AnimationBoard640_id_project" Association="Self.Key_AnimationBoard640_id_project">
+            <End Role="NewProject" EntitySet="NewProject" />
+            <End Role="AnimationBoard640" EntitySet="AnimationBoard640" />
+          </AssociationSet>
+          <AssociationSet Name="Key_AnimationBoard800_id_project" Association="Self.Key_AnimationBoard800_id_project">
+            <End Role="NewProject" EntitySet="NewProject" />
+            <End Role="AnimationBoard800" EntitySet="AnimationBoard800" />
+          </AssociationSet>
           <AssociationSet Name="Key_BoardColors_id_project" Association="Self.Key_BoardColors_id_project">
             <End Role="NewProject" EntitySet="NewProject" />
             <End Role="BoardColors" EntitySet="BoardColors" />
@@ -174,6 +252,21 @@
           <AssociationSet Name="Key_SquareFill_id_project" Association="ProjektSemestralnyDBModel.Key_SquareFill_id_project">
             <End Role="NewProject" EntitySet="NewProjects" />
             <End Role="SquareFill" EntitySet="SquareFills" />
+          </AssociationSet>
+          <EntitySet Name="AnimationBoard400" EntityType="ProjektSemestralnyDBModel.AnimationBoard400" />
+          <EntitySet Name="AnimationBoard640" EntityType="ProjektSemestralnyDBModel.AnimationBoard640" />
+          <EntitySet Name="AnimationBoard800" EntityType="ProjektSemestralnyDBModel.AnimationBoard800" />
+          <AssociationSet Name="Key_AnimationBoard400_id_project" Association="ProjektSemestralnyDBModel.Key_AnimationBoard400_id_project">
+            <End Role="NewProject" EntitySet="NewProjects" />
+            <End Role="AnimationBoard400" EntitySet="AnimationBoard400" />
+          </AssociationSet>
+          <AssociationSet Name="Key_AnimationBoard640_id_project" Association="ProjektSemestralnyDBModel.Key_AnimationBoard640_id_project">
+            <End Role="NewProject" EntitySet="NewProjects" />
+            <End Role="AnimationBoard640" EntitySet="AnimationBoard640" />
+          </AssociationSet>
+          <AssociationSet Name="Key_AnimationBoard800_id_project" Association="ProjektSemestralnyDBModel.Key_AnimationBoard800_id_project">
+            <End Role="NewProject" EntitySet="NewProjects" />
+            <End Role="AnimationBoard800" EntitySet="AnimationBoard800" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="BoardColor">
@@ -241,6 +334,9 @@
           <NavigationProperty Name="BoardColors" Relationship="ProjektSemestralnyDBModel.Key_BoardColors_id_project" FromRole="NewProject" ToRole="BoardColor" />
           <NavigationProperty Name="DefaultColors" Relationship="ProjektSemestralnyDBModel.Key_DefaultColors_id_project" FromRole="NewProject" ToRole="DefaultColor" />
           <NavigationProperty Name="SquareFills" Relationship="ProjektSemestralnyDBModel.Key_SquareFill_id_project" FromRole="NewProject" ToRole="SquareFill" />
+          <NavigationProperty Name="AnimationBoard400" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard400_id_project" FromRole="NewProject" ToRole="AnimationBoard400" />
+          <NavigationProperty Name="AnimationBoard640" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard640_id_project" FromRole="NewProject" ToRole="AnimationBoard640" />
+          <NavigationProperty Name="AnimationBoard800" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard800_id_project" FromRole="NewProject" ToRole="AnimationBoard800" />
         </EntityType>
         <EntityType Name="SquareFill">
           <Key>
@@ -297,6 +393,72 @@
               <PropertyRef Name="id_project" />
             </Principal>
             <Dependent Role="SquareFill">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AnimationBoard400">
+          <Key>
+            <PropertyRef Name="id_animation" />
+          </Key>
+          <Property Name="id_animation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_project" Type="Int32" Nullable="false" />
+          <Property Name="boardSize" Type="Int32" Nullable="false" />
+          <Property Name="animIndex" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard400_id_project" FromRole="AnimationBoard400" ToRole="NewProject" />
+        </EntityType>
+        <EntityType Name="AnimationBoard640">
+          <Key>
+            <PropertyRef Name="id_animation" />
+          </Key>
+          <Property Name="id_animation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_project" Type="Int32" Nullable="false" />
+          <Property Name="boardSize" Type="Int32" Nullable="false" />
+          <Property Name="animIndex" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard640_id_project" FromRole="AnimationBoard640" ToRole="NewProject" />
+        </EntityType>
+        <EntityType Name="AnimationBoard800">
+          <Key>
+            <PropertyRef Name="id_animation" />
+          </Key>
+          <Property Name="id_animation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_project" Type="Int32" Nullable="false" />
+          <Property Name="boardSize" Type="Int32" Nullable="false" />
+          <Property Name="animIndex" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NewProject" Relationship="ProjektSemestralnyDBModel.Key_AnimationBoard800_id_project" FromRole="AnimationBoard800" ToRole="NewProject" />
+        </EntityType>
+        <Association Name="Key_AnimationBoard400_id_project">
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="1" />
+          <End Type="ProjektSemestralnyDBModel.AnimationBoard400" Role="AnimationBoard400" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="AnimationBoard400">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_AnimationBoard640_id_project">
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="1" />
+          <End Type="ProjektSemestralnyDBModel.AnimationBoard640" Role="AnimationBoard640" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="AnimationBoard640">
+              <PropertyRef Name="id_project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Key_AnimationBoard800_id_project">
+          <End Type="ProjektSemestralnyDBModel.NewProject" Role="NewProject" Multiplicity="1" />
+          <End Type="ProjektSemestralnyDBModel.AnimationBoard800" Role="AnimationBoard800" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewProject">
+              <PropertyRef Name="id_project" />
+            </Principal>
+            <Dependent Role="AnimationBoard800">
               <PropertyRef Name="id_project" />
             </Dependent>
           </ReferentialConstraint>
@@ -380,6 +542,36 @@
                 <ScalarProperty Name="defaultRed" ColumnName="defaultRed" />
                 <ScalarProperty Name="id_defaultSquareFill" ColumnName="id_defaultSquareFill" />
                 <ScalarProperty Name="id_project" ColumnName="id_project" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimationBoard400">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.AnimationBoard400">
+              <MappingFragment StoreEntitySet="AnimationBoard400">
+                <ScalarProperty Name="animIndex" ColumnName="animIndex" />
+                <ScalarProperty Name="boardSize" ColumnName="boardSize" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
+                <ScalarProperty Name="id_animation" ColumnName="id_animation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimationBoard640">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.AnimationBoard640">
+              <MappingFragment StoreEntitySet="AnimationBoard640">
+                <ScalarProperty Name="animIndex" ColumnName="animIndex" />
+                <ScalarProperty Name="boardSize" ColumnName="boardSize" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
+                <ScalarProperty Name="id_animation" ColumnName="id_animation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnimationBoard800">
+            <EntityTypeMapping TypeName="ProjektSemestralnyDBModel.AnimationBoard800">
+              <MappingFragment StoreEntitySet="AnimationBoard800">
+                <ScalarProperty Name="animIndex" ColumnName="animIndex" />
+                <ScalarProperty Name="boardSize" ColumnName="boardSize" />
+                <ScalarProperty Name="id_project" ColumnName="id_project" />
+                <ScalarProperty Name="id_animation" ColumnName="id_animation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

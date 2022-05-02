@@ -32,5 +32,8 @@ namespace ProjektSemestralny
         public virtual DbSet<NewColor> NewColors { get; set; }
         public virtual DbSet<NewProject> NewProjects { get; set; }
         public virtual DbSet<SquareFill> SquareFills { get; set; }
+        public virtual DbSet<AnimationBoard400> AnimationBoard400 { get; set; }
+        public virtual DbSet<AnimationBoard640> AnimationBoard640 { get; set; }
+        public virtual DbSet<AnimationBoard800> AnimationBoard800 { get; set; }
     }
 }

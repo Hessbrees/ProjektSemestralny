@@ -60,6 +60,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimationBoard400.cs">
+      <DependentUpon>ProjektSemDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimationBoard640.cs">
+      <DependentUpon>ProjektSemDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnimationBoard800.cs">
+      <DependentUpon>ProjektSemDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
