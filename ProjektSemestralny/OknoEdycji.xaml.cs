@@ -306,6 +306,9 @@ namespace ProjektSemestralny
                             green = color.rgb_green;
                             blue = color.rgb_blue;
 
+                            red_color[k] = red;
+                            green_color[k] = green;
+                            blue_color[k] = blue;
 
                             Rectangle r = new Rectangle
                             {
@@ -357,7 +360,13 @@ namespace ProjektSemestralny
                             green_color[k] = square.rgb_green;
                             k++;
                         }
-                        desc_prop = item.descNew;
+                        if (item.description) desc_prop = item.descNew;
+                        else
+                        {
+                            desc_prop = "";
+                            Main_desc.IsReadOnly = true;
+                        }
+
                     }
             db.SaveChanges();
             Main_desc.Text = desc_prop;
@@ -392,9 +401,11 @@ namespace ProjektSemestralny
                             square.rgb_green = green_color[k];
                             k++;
                         }
-                        if (desc_prop != null)
-                            item.descNew = desc_prop;
-
+                        if (item.description)
+                        {
+                            if (desc_prop != null)
+                                item.descNew = desc_prop;
+                        }
                     }
             db.SaveChanges();
 
