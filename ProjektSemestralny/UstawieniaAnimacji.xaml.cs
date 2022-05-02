@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ProjektSemestralny
 {
@@ -19,7 +20,15 @@ namespace ProjektSemestralny
     /// </summary>
     public partial class UstawieniaAnimacji : Window
     {
+        private byte[] red_color = new byte[10000];
+        private byte[] green_color = new byte[10000];
+        private byte[] blue_color = new byte[10000];
+
         private int _boardSize;
+        private List<int> _actualID400 = new List<int>();
+        private List<int> _actualID640 = new List<int>();
+        private List<int> _actualID800 = new List<int>();
+        private int count;
         public UstawieniaAnimacji()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -36,21 +45,7 @@ namespace ProjektSemestralny
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Start
-
-            // Wyjatki czas przejscia 
-            int _interval = 1;
-            try
-            {
-                _interval = int.Parse(interval.Text);
-                if (_interval < 0 | _interval > 10) throw new Exception();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Czas przejścia musi być liczbą całkowitą z przedziału 1-10s");
-            }
-
-
-
+            StartAnimation();
         }
         private void LoadProjects()
         {
@@ -68,6 +63,10 @@ namespace ProjektSemestralny
         private void LoadAnimList()
         {
             AnimationList.Items.Clear();
+            _actualID400.Clear();
+            _actualID640.Clear();
+            _actualID800.Clear();
+
             ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
             if (_boardSize == 400)
             {
@@ -80,6 +79,7 @@ namespace ProjektSemestralny
                     foreach (var item in proj)
                     {
                         AnimationList.Items.Add(item.projectName);
+                        _actualID400.Add(item.id_project);
                     }
                 }
             }
@@ -94,6 +94,7 @@ namespace ProjektSemestralny
                     foreach (var item in proj)
                     {
                         AnimationList.Items.Add(item.projectName);
+                        _actualID640.Add(item.id_project);
                     }
                 }
             }
@@ -108,6 +109,7 @@ namespace ProjektSemestralny
                     foreach (var item in proj)
                     {
                         AnimationList.Items.Add(item.projectName);
+                        _actualID800.Add(item.id_project);
                     }
                 }
             }
@@ -256,6 +258,83 @@ namespace ProjektSemestralny
             //usun
             RemoveProject();
             LoadAnimList();
+        }
+
+        private void StartAnimation()
+        {
+            // Wyjatki czas przejscia 
+            int _interval = 1;
+            try
+            {
+                _interval = int.Parse(interval.Text);
+                if (_interval < 0 | _interval > 10) throw new Exception();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Czas przejścia musi być liczbą całkowitą z przedziału 1-10s");
+            }
+
+            DispatcherTimer Timer = new DispatcherTimer();
+            Timer.Tick += new EventHandler(TimeClick);
+            Timer.Interval = new TimeSpan(0,0,_interval);
+            Timer.Start();
+
+
+        }
+        private void TimeClick(object sender, EventArgs e)
+        {
+            if(_actualID400[count]!= null)
+            {
+                Load(_actualID400[count]);
+                count++;
+            }
+        }
+
+        private void Load(int ID)
+        {
+            MainAnimLayer.Children.Clear();
+            ProjektSemestralnyDBEntities db = new ProjektSemestralnyDBEntities();
+
+            var proj = from p in db.NewProjects
+                       select p;
+            byte red = 0; byte green = 0; byte blue = 0;
+            int k = 0;
+            int i = 0;
+            int j = 0;
+                foreach (var item in proj)
+                    if (item.id_project == ID)
+                    {
+                        var fl = from f in db.BoardColors
+                                 where f.id_project == item.id_project
+                                 select f;
+
+                        foreach (var color in fl)
+                        {
+                            red = color.rgb_red;
+                            green = color.rgb_green;
+                            blue = color.rgb_blue;
+
+                            Rectangle r = new Rectangle
+                            {
+                                Height = item.squareSize,
+                                Width = item.squareSize,
+                                Fill = new SolidColorBrush(Color.FromRgb(red, green, blue)),
+                            };
+
+                            r.VerticalAlignment = VerticalAlignment.Top;
+                            r.HorizontalAlignment = HorizontalAlignment.Left;
+                            r.Margin = new Thickness(i * item.squareSize, j * item.squareSize, 0, 0);
+                            MainAnimLayer.Children.Add(r);
+
+                            k++;
+                            if (j % ((item.boardSize / item.squareSize) - 1) == 0 & j != 0)
+                            {
+                                i++;
+                                j = 0;
+                            }
+                            else j++;
+                        }
+                    }
         }
     }
 }
