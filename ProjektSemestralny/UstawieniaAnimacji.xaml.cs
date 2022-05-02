@@ -283,7 +283,7 @@ namespace ProjektSemestralny
         }
         private void TimeClick(object sender, EventArgs e)
         {
-            if(_actualID400[count]!= null)
+            if (count < _actualID400.Count)
             {
                 Load(_actualID400[count]);
                 count++;

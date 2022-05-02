@@ -77,6 +77,27 @@ namespace ProjektSemestralny
                             db.BoardColors.Remove(b_item);
 
                         db.NewProjects.Remove(item);
+
+                        var anim= from a in db.AnimationBoard400
+                                    where a.id_project == item.id_project
+                                    select a;
+                        foreach (var a_item in anim)
+                            db.AnimationBoard400.Remove(a_item);
+
+                        var anim2 = from a in db.AnimationBoard640
+                                   where a.id_project == item.id_project
+                                   select a;
+                        foreach (var a_item in anim2)
+                            db.AnimationBoard640.Remove(a_item);
+
+                        var anim3 = from a in db.AnimationBoard800
+                                   where a.id_project == item.id_project
+                                   select a;
+                        foreach (var a_item in anim3)
+                            db.AnimationBoard800.Remove(a_item);
+
+                        db.NewProjects.Remove(item);
+
                     }
                     idNumer++;
                 }
