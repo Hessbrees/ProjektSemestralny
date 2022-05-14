@@ -47,6 +47,7 @@ namespace ProjektSemestralny
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Start
+            LoadAnimList();
             StartAnimation();
         }
         private void LoadProjects()
