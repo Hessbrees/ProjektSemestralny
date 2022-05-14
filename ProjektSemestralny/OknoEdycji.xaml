@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="OknoEdycji" Height="540" Width="560" x:Name="OknoPar"
+        Title="Okno edycji" Height="540" Width="560" x:Name="OknoPar"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
     <Grid Background="AntiqueWhite">
 

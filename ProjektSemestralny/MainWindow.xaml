@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="MainWindow" Height="420" Width="200"
+        Title="Menu Główne" Height="420" Width="200"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
     
     <Grid Background="AntiqueWhite">

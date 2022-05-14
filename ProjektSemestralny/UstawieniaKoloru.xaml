@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="UstawieniaKoloru" Height="420" Width="320"
+        Title="Ustawienia koloru" Height="420" Width="320"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
 
     <Grid Background="AntiqueWhite">

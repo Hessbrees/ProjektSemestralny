@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6A67A88C2580484A8177D32BABFD333D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_9A4FECF1D40FFF95C71CEC2C9EC9CD63"
         "OwnerKey" = "8:_A19FBFF7C46A4FB0A190A0460F7414E4"
         "MsmSig" = "8:_UNDEFINED"
@@ -64,12 +70,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E2700FD5D7699FC627AF99995805E988"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A19FBFF7C46A4FB0A190A0460F7414E4"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -83,6 +83,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B10180B549372BE9AABAB54FA3AB542D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E2700FD5D7699FC627AF99995805E988"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -103,6 +109,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -119,6 +133,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -152,6 +174,26 @@
             {
             "SourcePath" = "8:..\\ProjektSemestralny\\ProjektSemestralnyDB_log.ldf"
             "TargetName" = "8:ProjektSemestralnyDB_log.ldf"
+            "Tag" = "8:"
+            "Folder" = "8:_F0505D60E7E7479DAE354EFC5D3F0BD4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A67A88C2580484A8177D32BABFD333D"
+            {
+            "SourcePath" = "8:..\\DokumentacjaTechniczna.pdf"
+            "TargetName" = "8:DokumentacjaTechniczna.pdf"
             "Tag" = "8:"
             "Folder" = "8:_F0505D60E7E7479DAE354EFC5D3F0BD4"
             "Condition" = "8:"

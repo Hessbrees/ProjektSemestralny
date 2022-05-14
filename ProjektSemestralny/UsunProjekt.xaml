@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-        Title="UsunProjekt" Height="480" Width="320"
+        Title="Usuń projekt" Height="480" Width="320"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Center" Margin="10,10,0,0" Text="Wybierz Projekt" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20"/>

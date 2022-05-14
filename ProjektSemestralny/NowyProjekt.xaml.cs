@@ -157,12 +157,6 @@ namespace ProjektSemestralny
                         item.choosenColorGreen = 255;
                     }
 
-                    //Zapisanie elementów nowej planszy
-                    var bor = from b in db.BoardColors
-                              select b;
-
-
-
                     db.SaveChanges();
 
                     Close();

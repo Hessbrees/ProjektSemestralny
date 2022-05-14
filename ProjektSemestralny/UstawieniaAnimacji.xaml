@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektSemestralny"
         mc:Ignorable="d"
-       Title="UstawieniaAnimacji" Height="540" Width="560" x:Name="UstAnim"
+       Title="Ustawienia animacji" Height="540" Width="560" x:Name="UstAnim"
         ResizeMode ="NoResize" Topmost="False" WindowState="Normal">
     <Grid Background="AntiqueWhite">
         <TextBlock HorizontalAlignment="Right" Margin="0,0,367,64" Text="Czas przejścia (1-10s)" TextWrapping="Wrap" VerticalAlignment="Bottom" FontFamily="Arial" FontSize="10"/>

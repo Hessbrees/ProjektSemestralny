@@ -170,6 +170,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProjektSemDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DokumentacjaTechniczna.pdf" />
     <None Include="packages.config" />
     <None Include="ProjektSemDataModel.edmx.diagram">
       <DependentUpon>ProjektSemDataModel.edmx</DependentUpon>
